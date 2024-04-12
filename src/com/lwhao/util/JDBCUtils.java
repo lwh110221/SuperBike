@@ -38,7 +38,6 @@ public class JDBCUtils {
     /**
      * 获取数据库连接池中的连接
      * 如果返回null，说明获取连接失败
-     * @return
      */
     public static Connection getConnection() {
         Connection conn = conns.get();
