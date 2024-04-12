@@ -3,7 +3,7 @@ package com.lwhao.dao;
 import com.lwhao.bean.Bike;
 
 import java.util.List;
-import java.math..BigDecimal;
+import java.math.BigDecimal;
 
 /**
  * @author : Luowenhao221
