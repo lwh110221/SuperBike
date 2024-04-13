@@ -92,4 +92,45 @@ public class Bike {
     public void setImg_path(String img_path) {
         this.img_path = img_path;
     }
+
+
+    /**
+     * 重写toString方法
+     */
+    @Override
+    public String toString() {
+        return "Bike{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
+                ", price=" + price +
+                ", sales=" + sales +
+                ", stock=" + stock +
+                ", size=" + size +
+                ", classification='" + classification + '\'' + //新增分类
+                ", img_path='" + img_path + '\'' +
+                '}';
+    }
+
+
+    /**
+     * 无参构造方法
+     */
+    public Bike() {
+    }
+
+    /**
+     * 有参构造方法
+     */
+    public Bike(Integer id, String name, String brand, BigDecimal price, Integer sales, Integer stock, String size, String classification, String img_path){
+        this.id = id;
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.sales = sales;
+        this.stock = stock;
+        this.size = size;
+        this.classification = classification;
+        this.img_path = img_path;
+    }
 }

@@ -57,4 +57,38 @@ public class Order {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+
+
+
+    /**
+     * @param orderId 订单号
+     * @param createTime 订单创建时间
+     * @param price 订单总价
+     * @param status 订单状态
+     * @param userId 用户id
+     */
+    public Order(String orderId, Date createTime, BigDecimal price, Integer status, Integer userId) {
+        this.orderId = orderId;
+        this.createTime = createTime;
+        this.price = price;
+        this.status = status;
+        this.userId = userId;
+    }
+
+    public Order() {
+    }//无参构造方法
+
+
+    // 重写toString方法
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId='" + orderId + '\'' +
+                ", createTime=" + createTime +
+                ", price=" + price +
+                ", status=" + status +
+                ", userId=" + userId +
+                '}';
+    }
 }

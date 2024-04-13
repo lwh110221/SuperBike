@@ -80,4 +80,40 @@ public class User {
     public void setAdminornot(String adminornot) {
         this.adminornot = adminornot;
     }
+
+
+    /**
+     * 重写toString方法
+     */
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", receiver='" + receiver + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
+
+    public User() {
+    }//无参构造方法
+
+
+    /**
+     * 有参构造方法
+     */
+
+    public User(Integer id, String username, String password, String email, String address,String receiver,String phone,String adminornot) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.address = address;
+        this.receiver = receiver;
+        this.phone = phone;
+        this.adminornot = adminornot;      //新增管理员属性 yes:管理员
+    }
 }
