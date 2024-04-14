@@ -114,6 +114,6 @@ public class User {
         this.address = address;
         this.receiver = receiver;
         this.phone = phone;
-        this.adminornot = adminornot;      //新增管理员属性 yes:管理员
+        this.adminornot = adminornot;      //新增管理员判断属性 yes:管理员
     }
 }
