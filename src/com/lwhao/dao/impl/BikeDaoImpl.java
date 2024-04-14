@@ -26,8 +26,8 @@ public class BikeDaoImpl extends BaseDao implements BikeDao {
      */
     @Override
     public int addBike(Bike bike) {
-        String sql = "insert into t_bike(`name`,`price`,`brand`,`sales`,`stock`,`size`,`classification`,`img_path`) values(?,?,?,?,?,?,?,?)";
-        return update(sql, bike.getName(), bike.getPrice(), bike.getBrand(), bike.getSales(), bike.getStock(), bike.getSize(), bike.getClassification(), bike.getImg_path());
+        String sql = "insert into t_bike(`name`,`price`,`brand`,`sales`,`stock`,`size`) values(?,?,?,?,?,?,?,?)";
+        return update(sql, bike.getName(), bike.getPrice(), bike.getBrand(), bike.getSales(), bike.getStock(), bike.getSize());
     }
 
     /**
