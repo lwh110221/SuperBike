@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 //用户类的数据库操作接口
-public interface UserDAO {
+public interface UserDao {
     /**
      * 保存用户
      * @param user
