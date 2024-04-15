@@ -37,4 +37,10 @@ public interface BikeDao {
      */
     public Bike queryBikeById(Integer id);
 
+    /**
+     * 查询所有自行车
+     * @return
+     */
+    public List<Bike> queryBikes();
+
 }
