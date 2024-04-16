@@ -60,5 +60,18 @@ public interface UserDao {
      */
     public User querybyUsernameAndPassword(String username,String password);
 
+    /**
+     * 查询分页的总记录数
+     * @return
+     */
+    public Integer queryForPageTotalCount();
 
+    /**
+     * 查询分页的数据
+     * @param begin
+     * @param pageSize
+     * @return
+     */
+
+    public List<User> queryForPageItems(int begin, int pageSize);
 }

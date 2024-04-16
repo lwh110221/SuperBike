@@ -1,5 +1,6 @@
 package com.lwhao.service;
 
+import com.lwhao.bean.Page;
 import com.lwhao.bean.User;
 
 import java.util.List;
@@ -12,17 +13,20 @@ import java.util.List;
 
 // 用户服务类
 public interface UserService {
-    /**
-     * 注册用户
-     * @param user
-     */
-    public void registUser(User user);
+
     /**
      * 登录
      * @param user
      * @return
      */
     public User login(User user);
+
+    /**
+     * 注册用户
+     * @param user
+     */
+    public void registUser(User user);
+
     /**
      * 检查用户名是否可用
      * @param username
@@ -61,5 +65,15 @@ public interface UserService {
      */
 
     public List<User> queryUsers();
+
+    /**
+     * 分页
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+
+    public Page<User> page(int pageNo, int pageSize);
+
 
 }

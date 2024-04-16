@@ -110,4 +110,29 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         return queryForList(User.class,sql);
     }
 
+    /**
+     * 查询用户总数
+     * @return
+     */
+
+    @Override
+    public Integer queryForPageTotalCount() {
+        String sql = "select count(*) from t_user";
+        Number count = (Number) queryForSingleValue(sql);
+        return count.intValue();
+    }
+
+    /**
+     * 查询用户分页
+     * @param begin
+     * @param pageSize
+     * @return
+     */
+
+    @Override
+    public List<User> queryForPageItems(int begin, int pageSize) {
+        String sql = "select * from t_user limit ?,?";
+        return queryForList(User.class,sql,begin,pageSize);
+    }
+
 }
