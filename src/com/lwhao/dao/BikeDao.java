@@ -43,4 +43,22 @@ public interface BikeDao {
      */
     public List<Bike> queryBikes();
 
+    Integer queryForPageTotalCount();
+
+    List<Bike> queryForPageItems(int begin, int pageSize);
+
+    Integer queryForPageTotalCountByPrice(int min, int max);
+
+    List<Bike> queryForPageItemsByPrice(int begin, int pageSize, int min, int max);
+
+    Integer queryForPageTotalCountByNameOrBrand(String nameorbrand);
+
+    List<Bike> queryForPageItemsByNameOrBrand(int begin, int pageSize, String nameorbrand);
+
+    List<Bike> queryForPageItemsOrder();
+
+    BigDecimal queryTotalMoney();
+
+    public Integer queryBikenums();
+
 }

@@ -1,6 +1,7 @@
 package com.lwhao.service;
 
 import com.lwhao.bean.Bike;
+import com.lwhao.bean.Page;
 
 import java.util.List;
 import java.math.BigDecimal;
@@ -48,4 +49,37 @@ public interface BikeService {
      * @return
      */
     BigDecimal queryTotalMoney();
+
+    /**
+     * 分页查询
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+
+    Page<Bike> page(int pageNo, int pageSize);
+
+    /**
+     * 根据价格分页查询
+     * @param pageNo
+     * @param pageSize
+     * @param min
+     * @param max
+     * @return
+     */
+
+    Page<Bike> pageByPrice(int pageNo, int pageSize, int min, int max);
+    /**
+     * 根据名称或品牌分页查询
+     * @param pageNo
+     * @param pageSize
+     * @param nameOrBrand
+     * @return
+     */
+    Page<Bike> pageByNameOrBrand(int pageNo, int pageSize, String nameOrBrand);
+    /**
+     * 查询所有自行车车并按价格排序
+     * @return
+     */
+    Page<Bike> pageOrder();
 }
