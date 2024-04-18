@@ -73,15 +73,6 @@ public class User {
         this.phone = phone;
     }
 
-    public String getAdminornot() {
-        return adminornot;
-    }
-
-    public void setAdminornot(String adminornot) {
-        this.adminornot = adminornot;
-    }
-
-
     /**
      * 重写toString方法
      */
