@@ -64,4 +64,59 @@ public class OrderServiceImpl implements OrderService{
         return orderId;
     }
 
+    /**
+     * 查询所有订单
+     * @return 返回订单列表
+     */
+    @Override
+    public List<Order> queryAllOrders() {
+        // 查询所有订单
+        return orderDao.queryAllOrders();
+    }
+
+    /**
+     * 发货
+     * @param orderId 订单号
+     */
+    @Override
+    public void sendOrder(String orderId) {
+        // 修改订单状态为已发货
+        orderDao.updateOrderStatus(1, orderId);
+    }
+
+    /**
+     * 查询我的订单
+     * @param id 用户id
+     * @return 返回订单列表
+     */
+
+    @Override
+    public List<Order> queryMyOrders(Integer id) {
+        return orderDao.queryMyOrders(id);
+    }
+
+
+    /**
+     * 收货
+     * @param orderId 订单号
+     */
+
+    @Override
+    public void receivedOrder(String orderId) {
+        // 修改订单状态为已收货
+        orderDao.updateOrderStatus(2, orderId);
+    }
+
+    /**
+     * 查询订单项
+     * @param orderId 订单号
+     * @return 返回订单项列表
+     */
+
+    @Override
+    public List<OrderItem> showOrderItem(String orderId) {
+        List<OrderItem> orderItems = orderItemDao.showOrderItem(orderId);
+        return orderItems;
+    }
+
 }

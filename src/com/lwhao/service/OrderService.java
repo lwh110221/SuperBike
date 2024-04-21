@@ -10,10 +10,6 @@ import java.util.List;
  */
 public interface OrderService {
     /**
-     * 查询所有订单
-     */
-    public List<Order> queryAllOrders();
-    /**
      * 创建订单
      * @param cart
      * @param userId
@@ -21,25 +17,34 @@ public interface OrderService {
      */
     public String createOrder(Cart cart, Integer userId);
     /**
-     *查询我的订单
-        * @param id
-        * @return
-        */
-    public List<Order> queryMyOrders(Integer id);
+     * 查询所有订单
+     * @return
+     */
+
+    public List<Order> queryAllOrders();
+
     /**
-     *  发货
+     * 发货
      * @param orderId
      */
     public void sendOrder(String orderId);
     /**
-     *  收货
+     * 查询我的订单
+     * @param id
+     * @return
+     */
+
+    public List<Order> queryMyOrders(Integer id);
+    /**
+     * 确认收货
      * @param orderId
      */
-    public void receiveOrder(String orderId);
+    public void receivedOrder(String orderId);
     /**
-     *  显示订单详情
+     * 查询订单项
      * @param orderId
      * @return
      */
+
     List<OrderItem> showOrderItem(String orderId);
 }

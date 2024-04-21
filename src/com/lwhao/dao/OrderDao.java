@@ -10,6 +10,7 @@ import java.util.List;
  */
 public interface OrderDao {
     public int saveOrder(Order order);
+
     public List<Order> queryAllOrders();
     //更新订单状态
     public void updateOrderStatus(int i, String orderId);
