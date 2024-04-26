@@ -1,12 +1,17 @@
 package com.lwhao.servlet;
 
 import com.lwhao.bean.Bike;
+import com.lwhao.bean.Page;
 import com.lwhao.service.BikeService;
 import com.lwhao.service.impl.BikeServiceImpl;
 import com.lwhao.util.WebUtil;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.util.List;
 
 /**
  * @author : Luowenhao221
@@ -17,66 +22,106 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class BikeServlet extends BaseServlet{
 // 创建一个BikeService对象
-private BikeService bikeService = new BikeServiceImpl();
+    private BikeService bikeService = new BikeServiceImpl();
 
-/**
- * 添加自行车
- *
- * @param req
- * @param resp
- * @throws Exception
- */
-protected void add(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-    // 获取请求参数
-    int pageNo = WebUtil.parseInt(req.getParameter("pageNo"), 0);
-    pageNo += 1;
-    // 将请求参数封装成Bike对象
-    Bike bike = (Bike) WebUtil.copyParamToBean(req.getParameterMap(), new Bike());
-    // 调用BikeService的addBike方法添加自行车
-    bikeService.addBike(bike);
-    // 重定向到自行车列表页面
-    resp.sendRedirect(req.getContextPath() + "/自行车管理页面目录/?action=page&pageNo=" + pageNo);
-}
+    /**
+     * 添加自行车
+     *
+     * @param req
+     * @param resp
+     * @throws Exception
+     */
+    protected void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int pageNo = WebUtil.parseInt(req.getParameter("pageNo"),0);
+        pageNo+=1;
+        Bike bike = (Bike) WebUtil.copyParamToBean(req.getParameterMap(),new Bike());
+        bikeService.addBike(bike);
+        resp.sendRedirect(req.getContextPath() + "/自行车管理文件夹/bikeServlet?action=page&pageNo=" +pageNo);
+    }
 
+    /**
+     * 删除自行车
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
 
-/**
- * 删除自行车
- *
- * @param req
- * @param resp
- * @throws Exception
- */
-protected void delete(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-    // 获取请求参数
-    String id = req.getParameter("id");
-    int i = Integer.parseInt(id);
-    // 调用BikeService的deleteBikeById方法删除自行车
-    bikeService.deleteBikeById(i);
-    // 重定向到自行车列表页面
-    resp.sendRedirect(req.getContextPath() + "/自行车管理页面目录/?action=page&pageNo=" + req.getParameter("pageNo"));
-}
+    protected void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("id");
+        int i = Integer.parseInt(id);
+        bikeService.deleteBikeById(i);
+        resp.sendRedirect(req.getContextPath() + "/自行车管理文件夹/bikeServlet?action=page&pageNo=" +req.getParameter("pageNo"));
+    }
 
-/**
- * 更新自行车
- *
- * @param req
- * @param resp
- * @throws Exception
- */
-protected void update(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-    // 将请求参数封装成Bike对象
-    Bike bike = (Bike) WebUtil.copyParamToBean(req.getParameterMap(), new Bike());
-    // 调用BikeService的updateBike方法更新自行车
-    bikeService.updateBike(bike);
-    // 重定向到自行车列表页面
-    resp.sendRedirect(req.getContextPath() + "/自行车管理页面目录/?action=page&pageNo=" + req.getParameter("pageNo"));
-}
+    /**
+     * 更新自行车
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
 
-// 获取自行车
+    protected void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Bike bike = (Bike) WebUtil.copyParamToBean(req.getParameterMap(),new Bike());
+        bikeService.updateBike(bike);
+        resp.sendRedirect(req.getContextPath() + "/自行车管理文件夹/bikeServlet?action=page&pageNo=" +req.getParameter("pageNo"));
+    }
 
-//查询自行车列表
+    /**
+     * 根据id查询
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void getBike(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("id");
+        int i = Integer.parseInt(id);
+        Bike bike = bikeService.queryBikeById(i);
+        req.setAttribute("bike",bike);
+        req.getRequestDispatcher("/pages/自行车管理文件夹/bike_edit.jsp").forward(req,resp);
+    }
 
-// 分页查询自行车
+    /**
+     * 查询列表
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+
+    protected void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1、通过BikeService查询数据
+        List<Bike> bikes = bikeService.queryBikes();
+        //2、将数据保存在request域中
+        req.setAttribute("bikes",bikes);
+        //3、请求转发到pages/bikemanager/bike_manager.jsp
+        req.getRequestDispatcher("/pages/自行车管理文件夹/bike_manager.jsp").forward(req,resp);
+    }
+
+    /**
+     * 分页查询
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+
+    protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1、获取请求的参数pageNo和pageSize
+        int pageNo = WebUtil.parseInt(req.getParameter("pageNo"),1);
+        int pageSize = WebUtil.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
+
+        //2、调用BikeService.page(pageNo,pageSize)方法：返回page对象
+        Page<Bike> page = bikeService.page(pageNo,pageSize);
+        page.setUrl("bikemanager/bikeServlet?action=page");
+
+        //3、保存Page对象到request域中
+        req.setAttribute("page",page);
+        //4、请求转发到page/bikemanager/bike_manager.jsp页面
+        req.getRequestDispatcher("/pages/自行车管理文件夹/bike_manager.jsp").forward(req,resp);
+    }
 
 }
 
