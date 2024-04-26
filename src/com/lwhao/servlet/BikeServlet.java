@@ -36,7 +36,7 @@ public class BikeServlet extends BaseServlet{
         pageNo+=1;
         Bike bike = (Bike) WebUtil.copyParamToBean(req.getParameterMap(),new Bike());
         bikeService.addBike(bike);
-        resp.sendRedirect(req.getContextPath() + "/自行车管理文件夹/bikeServlet?action=page&pageNo=" +pageNo);
+        resp.sendRedirect(req.getContextPath() + "/bikemanager/bikeServlet?action=page&pageNo=" +pageNo);
     }
 
     /**
@@ -51,7 +51,7 @@ public class BikeServlet extends BaseServlet{
         String id = req.getParameter("id");
         int i = Integer.parseInt(id);
         bikeService.deleteBikeById(i);
-        resp.sendRedirect(req.getContextPath() + "/自行车管理文件夹/bikeServlet?action=page&pageNo=" +req.getParameter("pageNo"));
+        resp.sendRedirect(req.getContextPath() + "/bikemanager/bikeServlet?action=page&pageNo=" +req.getParameter("pageNo"));
     }
 
     /**
@@ -65,7 +65,7 @@ public class BikeServlet extends BaseServlet{
     protected void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Bike bike = (Bike) WebUtil.copyParamToBean(req.getParameterMap(),new Bike());
         bikeService.updateBike(bike);
-        resp.sendRedirect(req.getContextPath() + "/自行车管理文件夹/bikeServlet?action=page&pageNo=" +req.getParameter("pageNo"));
+        resp.sendRedirect(req.getContextPath() + "/bikemanager/bikeServlet?action=page&pageNo=" +req.getParameter("pageNo"));
     }
 
     /**
@@ -80,7 +80,7 @@ public class BikeServlet extends BaseServlet{
         int i = Integer.parseInt(id);
         Bike bike = bikeService.queryBikeById(i);
         req.setAttribute("bike",bike);
-        req.getRequestDispatcher("/pages/自行车管理文件夹/bike_edit.jsp").forward(req,resp);
+        req.getRequestDispatcher("/pages/bikemanager/bike_edit.jsp").forward(req,resp);
     }
 
     /**
@@ -97,7 +97,7 @@ public class BikeServlet extends BaseServlet{
         //2、将数据保存在request域中
         req.setAttribute("bikes",bikes);
         //3、请求转发到pages/bikemanager/bike_manager.jsp
-        req.getRequestDispatcher("/pages/自行车管理文件夹/bike_manager.jsp").forward(req,resp);
+        req.getRequestDispatcher("/pages/bikemanager/bike_manager.jsp").forward(req,resp);
     }
 
     /**
@@ -120,7 +120,7 @@ public class BikeServlet extends BaseServlet{
         //3、保存Page对象到request域中
         req.setAttribute("page",page);
         //4、请求转发到page/bikemanager/bike_manager.jsp页面
-        req.getRequestDispatcher("/pages/自行车管理文件夹/bike_manager.jsp").forward(req,resp);
+        req.getRequestDispatcher("/pages/bikemanager/bike_manager.jsp").forward(req,resp);
     }
 
 }

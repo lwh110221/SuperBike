@@ -72,6 +72,13 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+    public String getAdminornot() {
+        return adminornot;
+    }
+
+    public void setAdminornot(String adminornot) {
+        this.adminornot = adminornot;
+    }
 
     /**
      * 重写toString方法
@@ -107,4 +114,6 @@ public class User {
         this.phone = phone;
         this.adminornot = adminornot;      //新增管理员判断属性 yes:管理员
     }
+
+
 }
