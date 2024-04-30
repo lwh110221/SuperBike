@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -16,7 +17,7 @@
 <div id="header" class="container-fluid">
     <div class="row align-items-center">
         <div class="col">
-            <span id="wel_word" class="ms-2">Bikestore</span>
+            <span id="wel_word" class="ms-2">SupBikestore</span>
         </div>
         <div class="col">
             <c:if test="${empty sessionScope.user}">
