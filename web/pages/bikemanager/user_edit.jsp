@@ -53,7 +53,7 @@
                 <td><input name="password" type="text" class="form-control" value="${requestScope.user.password}"/></td>
                 <td><input name="email" type="text" class="form-control" value="${requestScope.user.email}"/></td>
                 <td><input name="address" type="text" class="form-control" value="${requestScope.user.address}"/></td>
-                <td><input name="receiver" type="text" class="from control" value="${requestScope.user.receiver}"/></td>
+                <td><input name="receiver" type="text" class="form-control" value="${requestScope.user.receiver}"/></td>
                 <td><input name="phone" type="text" class="form-control" value="${requestScope.user.phone}"/></td>
                 <td><input type="submit" class="btn btn-primary" value="提交"/></td>
             </tr>
