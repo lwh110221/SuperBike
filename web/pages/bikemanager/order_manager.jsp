@@ -40,7 +40,7 @@
             <tr>
                 <th>订单号</th>
                 <th>日期</th>
-                <th>用户</th>
+<%--            <th>用户</th>--%>
                 <th>金额</th>
                 <th>发货</th>
                 <th>详情</th>
@@ -51,7 +51,7 @@
                 <tr>
                     <td>${order.orderId}</td>
                     <td>${order.createTime}</td>
-                    <td>${sessionScope.user.username}</td>
+              <%--	<td>${order.user}</td>--%>
                     <td>${order.price}</td>
                     <td>
                         <c:choose>

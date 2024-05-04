@@ -46,7 +46,7 @@ public class OrderServiceImpl implements OrderService{
              * 获取每个购物车中的商品项转换为每一个订单项
              */
             CartItem cartItem = entry.getValue();
-            OrderItem orderItem = new OrderItem(null,cartItem.getName(),cartItem.getCount(),cartItem.getPrice(),cartItem.getTotalPrice(),orderId);
+            OrderItem orderItem = new OrderItem(null,cartItem.getName(),cartItem.getCount(),cartItem.getPrice(),cartItem.getTotalPrice(),orderId,"", "", "");
             /**
              * 保存订单到数据库
              */

@@ -52,9 +52,9 @@
                     <td>${ order.name }</td>
                     <td>${ order.count }</td>
                     <td>${ order.price }</td>
-                    <td>${sessionScope.user.address}</td>
-                    <td>${sessionScope.user.receiver}</td>
-                    <td>${sessionScope.user.phone}</td>
+                    <td>${ order.address}</td>
+                    <td>${ order.receiver}</td>
+                    <td>${ order.phone}</td>
                     <td>${ order.totalPrice }</td>
                     <td>${ order.orderId }</td>
                 </tr>
