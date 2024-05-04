@@ -41,6 +41,7 @@
                 <th>密码</th>
                 <th>电子邮箱</th>
                 <th>收货地址</th>
+                <th>收货人</th>
                 <th>电话</th>
                 <th colspan="2">操作</th>
             </tr>
@@ -52,6 +53,7 @@
                 <td><input name="password" type="text" class="form-control" value="${requestScope.user.password}"/></td>
                 <td><input name="email" type="text" class="form-control" value="${requestScope.user.email}"/></td>
                 <td><input name="address" type="text" class="form-control" value="${requestScope.user.address}"/></td>
+                <td><input name="receiver" type="text" class="from control" value="${requestScope.user.receiver}"/></td>
                 <td><input name="phone" type="text" class="form-control" value="${requestScope.user.phone}"/></td>
                 <td><input type="submit" class="btn btn-primary" value="提交"/></td>
             </tr>

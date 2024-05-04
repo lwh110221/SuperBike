@@ -64,15 +64,15 @@
                 <td>${usernumber}人</td>
             </tr>
             <tr>
-                <td>总订单数：</td>
+                <td>总订单数:</td>
                 <td>${ordernumber}单</td>
             </tr>
             <tr>
-                <td>销售辆数：</td>
-                <td>${bikenumbers}本</td>
+                <td>销售辆数:</td>
+                <td>${bikenumbers}辆</td>
             </tr>
             <tr>
-                <td>总收入：</td>
+                <td> 总收入:</td>
                 <td>${bigDecimal}元</td>
             </tr>
             </tbody>

@@ -62,6 +62,7 @@
                 <th>密码</th>
                 <th>电子邮箱</th>
                 <th>收货地址</th>
+                <th>收货人</th>
                 <th>电话</th>
                 <th colspan="2">修改</th>
             </tr>
@@ -69,10 +70,11 @@
             <tbody>
             <tr>
                 <td style="display: none;"><input name="id" type="text" value="${sessionScope.user.id}"/></td>
-                <td><input name="username" type="text" value="${sessionScope.user.username}" class="form-control"/></td>
+                <td><input name="username" type="text" value="${sessionScope.user.username}" class="form-control" readonly="readonly"/></td>
                 <td><input name="password" type="text" value="${sessionScope.user.password}" class="form-control"/></td>
                 <td><input name="email" type="text" value="${sessionScope.user.email}" class="form-control"/></td>
                 <td><input name="address" type="text" value="${sessionScope.user.address}" class="form-control"/></td>
+                <td><input name="receiver" type="text" value="${sessionScope.user.receiver}" class="form-control"/></td>
                 <td><input name="phone" type="text" value="${sessionScope.user.phone}" class="form-control"/></td>
                 <td><input type="submit" class="btn btn-primary" value="提交" onclick="onSubmit()"/></td>
             </tr>

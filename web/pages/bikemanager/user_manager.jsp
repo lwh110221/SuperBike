@@ -55,6 +55,7 @@
                 <th>密码</th>
                 <th>电子邮箱</th>
                 <th>收货地址</th>
+                <th>收货人</th>
                 <th>电话</th>
                 <th colspan="2">操作</th>
             </tr>
@@ -67,6 +68,7 @@
                     <td>${user.password}</td>
                     <td>${user.email}</td>
                     <td>${user.address}</td>
+                    <td>${user.receiver}</td>
                     <td>${user.phone}</td>
                     <td><a href="bikemanager/UserServlet?&action=getUser&id=${user.id}&pageNo=${requestScope.page.pageNo}" class="btn btn-primary">修改信息</a></td>
                     <td><a class="btn btn-danger deleteClass" href="bikemanager/UserServlet?action=delete&id=${user.id}&pageNo=${requestScope.page.pageNo}">删除信息</a></td>
@@ -74,7 +76,7 @@
             </c:forEach>
 
             <tr>
-                <td colspan="7"></td>
+                <td colspan="8"></td>
                 <td><a href="pages/bikemanager/user_edit.jsp?pageNo=${requestScope.page.pageTotal}" class="btn btn-success">添加用户</a></td>
             </tr>
             </tbody>

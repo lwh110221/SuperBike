@@ -310,7 +310,7 @@
         $("button.addToCart").click(function () {
             var bikeId = $(this).attr("bikeId");
             //发ajax请求添加商品到购物车
-            $.getJSON("http://localhost:8080/Bike/cartServlet", "action=ajaxAddItem&id=" + bikeId, function (data) {
+            $.getJSON("/Bike/cartServlet", "action=ajaxAddItem&id=" + bikeId, function (data) {
                 $("#cartTotalCount").text(data.totalCount);
                 $("#cartLastName").html(data.lastName+"已加入购物车");
             });
@@ -325,5 +325,6 @@
 
 </body>
 </html>
+
 
 

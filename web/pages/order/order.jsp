@@ -42,7 +42,7 @@
 <div id="header">
     <img id="logo_img" alt="Logo" src="static/img/logo.jpg" style="width: 150px">
     <span class="wel_word">我的订单</span>
-    <%@ include file="/pages/common/login_success_menu.jsp" %>
+    <%@include file="/pages/common/login_success_menu.jsp" %>
 </div>
 
 <div id="main" class="container">
@@ -86,3 +86,4 @@
 
 </body>
 </html>
+
