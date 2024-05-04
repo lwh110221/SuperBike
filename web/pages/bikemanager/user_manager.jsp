@@ -68,14 +68,14 @@
                     <td>${user.email}</td>
                     <td>${user.address}</td>
                     <td>${user.phone}</td>
-                    <td><a href="manager/UserServlet?&action=getUser&id=${user.id}&pageNo=${requestScope.page.pageNo}" class="btn btn-primary">修改信息</a></td>
-                    <td><a class="btn btn-danger deleteClass" href="manager/UserServlet?action=delete&id=${user.id}&pageNo=${requestScope.page.pageNo}">删除信息</a></td>
+                    <td><a href="bikemanager/UserServlet?&action=getUser&id=${user.id}&pageNo=${requestScope.page.pageNo}" class="btn btn-primary">修改信息</a></td>
+                    <td><a class="btn btn-danger deleteClass" href="bikemanager/UserServlet?action=delete&id=${user.id}&pageNo=${requestScope.page.pageNo}">删除信息</a></td>
                 </tr>
             </c:forEach>
 
             <tr>
                 <td colspan="7"></td>
-                <td><a href="pages/manager/user_edit.jsp?pageNo=${requestScope.page.pageTotal}" class="btn btn-success">添加用户</a></td>
+                <td><a href="pages/bikemanager/user_edit.jsp?pageNo=${requestScope.page.pageTotal}" class="btn btn-success">添加用户</a></td>
             </tr>
             </tbody>
         </table>

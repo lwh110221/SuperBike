@@ -164,7 +164,7 @@
         }
         .tip2 {
             position: absolute;
-            top: -100px;
+            top: -90px;
             right: -10px;
             transform: translateY(-50%);
             background-color: #a4ee20; /* 设置背景色 */
@@ -181,7 +181,14 @@
             margin-right: 20px;
             color: #156cc6;
         }
-
+        .mm{
+            position: fixed;
+            bottom: 180px;
+            right: -55px;
+            transform: scale(0.5);
+            display: inline-block;
+            border-radius: 20px;
+        }
 
     </style>
 </head>
@@ -198,7 +205,7 @@
                     <li class="nav-item"><a class="nav-link" href="pages/user/login.jsp">登录</a></li>
                     <li class="nav-item"><a class="nav-link" href="pages/user/regist.jsp">注册</a></li>
                     <li class="nav-item"><a class="nav-link" href="client/bikeServlet?action=pageOrder">热销榜单</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/manager/manager.jsp">后台管理</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/bikemanager/manager.jsp">后台管理</a></li>
                 </ul>
             </c:if>
             <c:if test="${not empty sessionScope.user}">
@@ -208,7 +215,7 @@
                     <a class="nav-link" href="client/bikeServlet?action=pageOrder">热销榜单</a>
                     <a class="nav-link" href="client/orderServlet?action=myOrders">我的订单</a>
                     <a class="nav-link" href="pages/user/userinfo.jsp">个人信息</a>
-                    <a class="nav-link" href="pages/manager/manager.jsp">后台管理</a>
+                    <a class="nav-link" href="pages/bikemanager/manager.jsp">后台管理</a>
                 </ul>
             </c:if>
         </div>
@@ -289,21 +296,27 @@
         </c:forEach>
     </div>
 </div>
+<div class="mm">
+    <a href="pages/client/catline.jsp">
+        <img src="static/img/lwhmm.gif" alt="mm">
+    </a>
+</div>
 
 
-    <script type="text/javascript">
-        $(function () {
-            //给加入购物车绑定单击事件
-            $("button.addToCart").click(function () {
-                var bikeId = $(this).attr("bikeId");
-                //发ajax请求添加商品到购物车
-                $.getJSON("http://localhost:8080/Bike/cartServlet", "action=ajaxAddItem&id=" + bikeId, function (data) {
-                    $("#cartTotalCount").text(data.totalCount);
-                    $("#cartLastName").html(data.lastName+"已加入购物车");
-                });
+
+<script type="text/javascript">
+    $(function () {
+        //给加入购物车绑定单击事件
+        $("button.addToCart").click(function () {
+            var bikeId = $(this).attr("bikeId");
+            //发ajax请求添加商品到购物车
+            $.getJSON("http://localhost:8080/Bike/cartServlet", "action=ajaxAddItem&id=" + bikeId, function (data) {
+                $("#cartTotalCount").text(data.totalCount);
+                $("#cartLastName").html(data.lastName+"已加入购物车");
             });
         });
-    </script>
+    });
+</script>
 
 <div id="my_footer">
     <%@include file="/pages/common/page_nav.jsp"%>
@@ -312,4 +325,5 @@
 
 </body>
 </html>
+
 

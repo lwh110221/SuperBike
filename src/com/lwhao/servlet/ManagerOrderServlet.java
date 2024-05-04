@@ -46,7 +46,7 @@ public class ManagerOrderServlet extends BaseServlet{
             // 设置订单到域对象中
             req.setAttribute("orders", orders);
             // 转发到订单页面
-            req.getRequestDispatcher("/pages/manager/order_manager.jsp").forward(req, resp);
+            req.getRequestDispatcher("/pages/bikemanager/order_manager.jsp").forward(req, resp);
         }
     }
 
@@ -126,6 +126,6 @@ public class ManagerOrderServlet extends BaseServlet{
         bigDecimal = bikeService.queryTotalMoney();
         String big = bigDecimal.toString();
         request.setAttribute("bigDecimal", big);
-        request.getRequestDispatcher("/pages/manager/order_totall.jsp").forward(request, response);
+        request.getRequestDispatcher("/pages/bikemanager/order_totall.jsp").forward(request, response);
     }
 }

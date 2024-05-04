@@ -33,7 +33,8 @@ public class ManagerUserServlet extends BaseServlet {
         pageNo+=1;
         User user = (User) WebUtil.copyParamToBean(req.getParameterMap(),new User());
         userService.addUser(user);
-        resp.sendRedirect(req.getContextPath() + "/manager/UserServlet?action=page&pageNo="+pageNo);
+        //req.getRequestDispatcher("/bikemanager/bikeServlet?action=list").forward(req,resp);
+        resp.sendRedirect(req.getContextPath() + "/bikemanager/UserServlet?action=page&pageNo=" +pageNo);
     }
 
     /**
@@ -48,7 +49,7 @@ public class ManagerUserServlet extends BaseServlet {
         String id = req.getParameter("id");
         int i = Integer.parseInt(id);
         userService.deleteUserById(i);
-        resp.sendRedirect(req.getContextPath() + "/manager/UserServlet?action=page&pageNo="+req.getParameter("pageNo"));
+        resp.sendRedirect(req.getContextPath() + "/bikemanager/UserServlet?action=page&pageNo=" +req.getParameter("pageNo"));
     }
 
     /**
@@ -62,7 +63,7 @@ public class ManagerUserServlet extends BaseServlet {
     protected void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) WebUtil.copyParamToBean(req.getParameterMap(),new User());
         userService.updateUser(user);
-        resp.sendRedirect(req.getContextPath() + "/manager/UserServlet?action=page&pageNo="+req.getParameter("pageNo"));
+        resp.sendRedirect(req.getContextPath() + "/bikemanager/UserServlet?action=page&pageNo=" +req.getParameter("pageNo"));
     }
 
     /**
@@ -77,7 +78,7 @@ public class ManagerUserServlet extends BaseServlet {
         int i = Integer.parseInt(id);
         User user = userService.queryUserById(i);
         req.setAttribute("user",user);
-        req.getRequestDispatcher("/pages/manager/user_edit.jsp").forward(req,resp);
+        req.getRequestDispatcher("/pages/bikemanager/user_edit.jsp").forward(req,resp);
     }
 
     /**
@@ -94,8 +95,8 @@ public class ManagerUserServlet extends BaseServlet {
         List<User> user = userService.queryUsers();
         //2、将数据保存在request域中
         req.setAttribute("user",user);
-        //3、请求转发到pages/manager/bike_manager.jsp
-        req.getRequestDispatcher("/pages/manager/user_manager.jsp").forward(req,resp);
+        //3、请求转发到pages/bikemanager/bike_manager.jsp
+        req.getRequestDispatcher("/pages/bikemanager/user_manager.jsp").forward(req,resp);
     }
 
 
@@ -114,11 +115,10 @@ public class ManagerUserServlet extends BaseServlet {
 
         //2、调用BikeService.page(pageNo,pageSize)方法：返回page对象
         Page<User> page = userService.page(pageNo,pageSize);
-        page.setUrl("manager/UserServlet?action=page");
-
+        page.setUrl("bikemanager/UserServlet?action=page");
         //3、保存Page对象到request域中
         req.setAttribute("page",page);
-        //4、请求转发到page/manager/bike_manager.jsp页面
-        req.getRequestDispatcher("/pages/manager/user_manager.jsp").forward(req,resp);
+        //4、请求转发到page/bikemanager/bike_manager.jsp页面
+        req.getRequestDispatcher("/pages/bikemanager/user_manager.jsp").forward(req,resp);
     }
 }

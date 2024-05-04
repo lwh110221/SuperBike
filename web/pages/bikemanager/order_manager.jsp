@@ -54,7 +54,7 @@
                     <td>
                         <c:choose>
                             <c:when test="${order.status==0}">
-                                <a href="manager/orderServlet?action=sendOrder&orderId=${order.orderId}" class="btn btn-primary">确认发货</a>
+                                <a href="bikemanager/orderServlet?action=sendOrder&orderId=${order.orderId}" class="btn btn-primary">确认发货</a>
                             </c:when>
                             <c:when test="${order.status == 1}">
                                 等待用户签收

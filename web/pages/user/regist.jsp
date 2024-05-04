@@ -102,7 +102,7 @@
                             <img id="code_img" alt="" src="kaptcha.jpg" style="width: 110px; height: 40px;">
                         </div>
                         <input type="submit" value="注册" class="btn btn-primary" id="sub_btn">
-                        <a href="manager/bikeServlet" class="btn btn-secondary">返回登录</a>
+                        <a href="bikemanager/bikeServlet" class="btn btn-secondary">返回登录</a>
                         <a style="float: right" href="/Bike/" class="btn btn-secondary">返回首页</a>
                     </form>
                 </div>
@@ -191,6 +191,5 @@
     });
 </script>
 <%@include file="/pages/common/footer.jsp"%>
-<%@include file="/pages/common/efficacy.jsp"%>
 </body>
 </html>

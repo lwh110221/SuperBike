@@ -71,7 +71,7 @@
         <table class="table table-striped table-hover">
             <thead>
             <tr>
-                <th>名称</th>
+                <th>型号</th>
                 <th>价格</th>
                 <th>品牌</th>
                 <th>销量</th>
@@ -93,13 +93,13 @@
                     <td>${bike.classification}</td>
                     <td>${bike.size}</td>
                     <td><img src="${bike.img_path}" alt="" style="width: 70px;height: 70px;"></td>
-                    <td><a href="manager/bikeServlet?&action=getBike&id=${bike.id}&pageNo=${requestScope.page.pageNo}" class="btn btn-primary">修改</a></td>
-                    <td><a href="manager/bikeServlet?action=delete&id=${bike.id}&pageNo=${requestScope.page.pageNo}" class="btn btn-danger deleteClass">删除</a></td>
+                    <td><a href="bikemanager/bikeServlet?&action=getBike&id=${bike.id}&pageNo=${requestScope.page.pageNo}" class="btn btn-primary">修改</a></td>
+                    <td><a href="bikemanager/bikeServlet?action=delete&id=${bike.id}&pageNo=${requestScope.page.pageNo}" class="btn btn-danger deleteClass">删除</a></td>
                 </tr>
             </c:forEach>
             <tr>
                 <td colspan="9"></td>
-                <td><a href="pages/manager/bike_edit.jsp?pageNo=${requestScope.page.pageTotal}" class="btn btn-success">添加图书</a></td>
+                <td><a href="pages/bikemanager/bike_edit.jsp?pageNo=${requestScope.page.pageTotal}" class="btn btn-success">添加</a></td>
             </tr>
             </tbody>
         </table>

@@ -65,16 +65,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="manager/bikeServlet?action=page">货架管理</a>
+                    <a class="nav-link" href="bikemanager/bikeServlet?action=page">货架管理</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="manager/orderServlet?action=orders">订单管理</a>
+                    <a class="nav-link" href="bikemanager/orderServlet?action=orders">订单管理</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="manager/UserServlet?action=page">用户管理</a>
+                    <a class="nav-link" href="bikemanager/UserServlet?action=page">用户管理</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="manager/orderServlet?action=showTotal">总账单</a>
+                    <a class="nav-link" href="bikemanager/orderServlet?action=showTotal">总账单</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.jsp">返回主页</a>

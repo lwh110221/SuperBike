@@ -30,7 +30,7 @@
 <div id="main1">
 </div>
 <div id="main" class="container">
-    <form action="manager/UserServlet" method="post">
+    <form action="bikemanager/UserServlet" method="post">
         <input type="hidden" name="pageNo" value="${param.pageNo}">
         <input type="hidden" name="action" value="${empty param.id ? "add":"update"}"/>
         <input type="hidden" name="id" value="${requestScope.user.id}"/>
