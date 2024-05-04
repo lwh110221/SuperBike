@@ -181,7 +181,7 @@
 
                 // 如果用户确认前往，则跳转到填写收货信息页面
                 if (confirmation) {
-                    window.location.href = 'userinfo.jsp';
+                    window.location.href = 'pages/user/userinfo.jsp';
                 }
             }
         });
