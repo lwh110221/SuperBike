@@ -158,13 +158,13 @@ public class BikeDaoImpl extends BaseDao implements BikeDao {
 
 
     /**
-     * 查询销量前50的自行车
+     * 查询销量前20的自行车
      * @return
      */
 
     @Override
     public List<Bike> queryForPageItemsOrder() {
-        String sql = "SELECT * FROM t_bike ORDER BY `sales` DESC LIMIT 50";
+        String sql = "SELECT * FROM t_bike ORDER BY `sales` DESC LIMIT 20";
         return queryForList(Bike.class, sql);
     }
 
