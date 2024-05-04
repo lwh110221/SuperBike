@@ -3,7 +3,7 @@ package com.lwhao.servlet;
 import com.lwhao.bean.User;
 import com.lwhao.service.UserService;
 import com.lwhao.service.impl.UserServiceImpl;
-import com.lwhao.util.WebUtil;
+import com.lwhao.util.WebUtils;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -105,7 +105,7 @@ public class UserServlet extends BaseServlet{
         String email = req.getParameter("email");
         String code = req.getParameter("code");
 
-        User user = (User) WebUtil.copyParamToBean(req.getParameterMap(),new User());
+        User user = (User) WebUtils.copyParamToBean(req.getParameterMap(),new User());
         //2、检查验证码是否正确 abcde
         if (token!=null&&token.equalsIgnoreCase(code)) {
             //3、检查用户名是否可用
@@ -140,7 +140,7 @@ public class UserServlet extends BaseServlet{
      */
 
     protected void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) WebUtil.copyParamToBean(req.getParameterMap(),new User());
+        User user = (User) WebUtils.copyParamToBean(req.getParameterMap(),new User());
         userService.updateUser(user);
         User user1 = userService.queryUserById(user.getId());
         req.getSession().setAttribute("user",user1);

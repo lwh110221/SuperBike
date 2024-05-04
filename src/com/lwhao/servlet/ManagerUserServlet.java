@@ -4,7 +4,7 @@ import com.lwhao.bean.Page;
 import com.lwhao.bean.User;
 import com.lwhao.service.UserService;
 import com.lwhao.service.impl.UserServiceImpl;
-import com.lwhao.util.WebUtil;
+import com.lwhao.util.WebUtils;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletRequest;
@@ -29,9 +29,9 @@ public class ManagerUserServlet extends BaseServlet {
      * @throws IOException
      */
     protected void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int pageNo = WebUtil.parseInt(req.getParameter("pageNo"),0);
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"),0);
         pageNo+=1;
-        User user = (User) WebUtil.copyParamToBean(req.getParameterMap(),new User());
+        User user = (User) WebUtils.copyParamToBean(req.getParameterMap(),new User());
         userService.addUser(user);
         //req.getRequestDispatcher("/bikemanager/bikeServlet?action=list").forward(req,resp);
         resp.sendRedirect(req.getContextPath() + "/bikemanager/UserServlet?action=page&pageNo=" +pageNo);
@@ -61,7 +61,7 @@ public class ManagerUserServlet extends BaseServlet {
      */
 
     protected void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) WebUtil.copyParamToBean(req.getParameterMap(),new User());
+        User user = (User) WebUtils.copyParamToBean(req.getParameterMap(),new User());
         userService.updateUser(user);
         resp.sendRedirect(req.getContextPath() + "/bikemanager/UserServlet?action=page&pageNo=" +req.getParameter("pageNo"));
     }
@@ -110,8 +110,8 @@ public class ManagerUserServlet extends BaseServlet {
 
     protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1、获取请求的参数pageNo和pageSize
-        int pageNo = WebUtil.parseInt(req.getParameter("pageNo"),1);
-        int pageSize = WebUtil.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"),1);
+        int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
 
         //2、调用BikeService.page(pageNo,pageSize)方法：返回page对象
         Page<User> page = userService.page(pageNo,pageSize);

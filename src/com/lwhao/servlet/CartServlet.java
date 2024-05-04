@@ -6,7 +6,7 @@ import com.lwhao.bean.Cart;
 import com.lwhao.bean.CartItem;
 import com.lwhao.service.BikeService;
 import com.lwhao.service.impl.BikeServiceImpl;
-import com.lwhao.util.WebUtil;
+import com.lwhao.util.WebUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +32,7 @@ public class CartServlet extends BaseServlet {
      * @throws IOException
      */
     protected void ajaxAddItem(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = WebUtil.parseInt(req.getParameter("id"),0);
+        int id = WebUtils.parseInt(req.getParameter("id"),0);
         Bike bike = bikeService.queryBikeById(id);
         CartItem cartItem = new CartItem(bike.getId(),bike.getName(),1,bike.getPrice(),bike.getPrice());
         Cart cart = (Cart) req.getSession().getAttribute("cart");
@@ -60,7 +60,7 @@ public class CartServlet extends BaseServlet {
      * @throws IOException
      */
     protected void addItem(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = WebUtil.parseInt(req.getParameter("id"),0);
+        int id = WebUtils.parseInt(req.getParameter("id"),0);
         Bike bike = bikeService.queryBikeById(id);
         CartItem cartItem = new CartItem(bike.getId(),bike.getName(),1,bike.getPrice(),bike.getPrice());
         Cart cart = (Cart) req.getSession().getAttribute("cart");
@@ -81,7 +81,7 @@ public class CartServlet extends BaseServlet {
      * @throws IOException
      */
     protected void deleteItem(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = WebUtil.parseInt(req.getParameter("id"),0);
+        int id = WebUtils.parseInt(req.getParameter("id"),0);
         Cart cart = (Cart) req.getSession().getAttribute("cart");
         if(cart!=null) {
             cart.deleteItem(id);
@@ -109,8 +109,8 @@ public class CartServlet extends BaseServlet {
      * @throws IOException
      */
     protected void updateCount(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = WebUtil.parseInt(req.getParameter("id"),0);
-        int count = WebUtil.parseInt(req.getParameter("count"),1);
+        int id = WebUtils.parseInt(req.getParameter("id"),0);
+        int count = WebUtils.parseInt(req.getParameter("count"),1);
         Cart cart = (Cart) req.getSession().getAttribute("cart");
         if(cart!=null) {
             cart.updateCount(id,count);

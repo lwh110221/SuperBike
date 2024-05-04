@@ -4,7 +4,7 @@ import com.lwhao.bean.Bike;
 import com.lwhao.bean.Page;
 import com.lwhao.service.BikeService;
 import com.lwhao.service.impl.BikeServiceImpl;
-import com.lwhao.util.WebUtil;
+import com.lwhao.util.WebUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -32,9 +32,9 @@ public class BikeServlet extends BaseServlet{
      * @throws Exception
      */
     protected void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int pageNo = WebUtil.parseInt(req.getParameter("pageNo"),0);
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"),0);
         pageNo+=1;
-        Bike bike = (Bike) WebUtil.copyParamToBean(req.getParameterMap(),new Bike());
+        Bike bike = (Bike) WebUtils.copyParamToBean(req.getParameterMap(),new Bike());
         bikeService.addBike(bike);
         resp.sendRedirect(req.getContextPath() + "/bikemanager/bikeServlet?action=page&pageNo=" +pageNo);
     }
@@ -63,7 +63,7 @@ public class BikeServlet extends BaseServlet{
      */
 
     protected void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Bike bike = (Bike) WebUtil.copyParamToBean(req.getParameterMap(),new Bike());
+        Bike bike = (Bike) WebUtils.copyParamToBean(req.getParameterMap(),new Bike());
         bikeService.updateBike(bike);
         resp.sendRedirect(req.getContextPath() + "/bikemanager/bikeServlet?action=page&pageNo=" +req.getParameter("pageNo"));
     }
@@ -110,8 +110,8 @@ public class BikeServlet extends BaseServlet{
 
     protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1、获取请求的参数pageNo和pageSize
-        int pageNo = WebUtil.parseInt(req.getParameter("pageNo"),1);
-        int pageSize = WebUtil.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"),1);
+        int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
 
         //2、调用BikeService.page(pageNo,pageSize)方法：返回page对象
         Page<Bike> page = bikeService.page(pageNo,pageSize);

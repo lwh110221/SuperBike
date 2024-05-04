@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
  * @date : 2024/4/23 8:49
  * @Project : SuperBike
  */
-public class BaseServlet extends HttpServlet {
+public abstract class BaseServlet extends HttpServlet {
     /**
      * 重写doGet方法
      * @param req

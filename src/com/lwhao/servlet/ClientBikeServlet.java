@@ -4,7 +4,7 @@ import com.lwhao.bean.Bike;
 import com.lwhao.bean.Page;
 import com.lwhao.service.BikeService;
 import com.lwhao.service.impl.BikeServiceImpl;
-import com.lwhao.util.WebUtil;
+import com.lwhao.util.WebUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -36,8 +36,8 @@ public class ClientBikeServlet extends BaseServlet {
      */
     protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1、获取请求的参数pageNo和pageSize
-        int pageNo = WebUtil.parseInt(req.getParameter("pageNo"),1);
-        int pageSize = WebUtil.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"),1);
+        int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
 
         //2、调用BikeService.page(pageNo,pageSize)方法：返回page对象
         Page<Bike> page = bikeService.page(pageNo,pageSize);
@@ -57,8 +57,8 @@ public class ClientBikeServlet extends BaseServlet {
      */
     protected void pageByNameOrBrand(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1、获取请求的参数pageNo和pageSize、nameorbrand
-        int pageNo = WebUtil.parseInt(req.getParameter("pageNo"),1);
-        int pageSize = WebUtil.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"),1);
+        int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
         String nameOrBrand = req.getParameter("nameorbrand");
 
         //2、调用BikeService.page(pageNo,pageSize)方法：返回page对象
@@ -84,10 +84,10 @@ public class ClientBikeServlet extends BaseServlet {
      */
     protected void pageByPrice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1、获取请求的参数pageNo和pageSize、min、max
-        int pageNo = WebUtil.parseInt(req.getParameter("pageNo"),1);
-        int pageSize = WebUtil.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
-        int min = WebUtil.parseInt(req.getParameter("min"),0);
-        int max = WebUtil.parseInt(req.getParameter("max"),Integer.MAX_VALUE);
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"),1);
+        int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
+        int min = WebUtils.parseInt(req.getParameter("min"),0);
+        int max = WebUtils.parseInt(req.getParameter("max"),Integer.MAX_VALUE);
 
         //2、调用BikeService.page(pageNo,pageSize)方法：返回page对象
         Page<Bike> page = bikeService.pageByPrice(pageNo,pageSize,min,max);

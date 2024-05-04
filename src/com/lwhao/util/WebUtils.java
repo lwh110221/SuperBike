@@ -9,7 +9,7 @@ import java.util.Map;
  * @date : 2024/4/22 20:02
  * @Project : SuperBike
  */
-public class WebUtil {
+public class WebUtils {
     /**
      * 快速注入
      * @param value
