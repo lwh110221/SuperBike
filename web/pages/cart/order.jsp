@@ -150,10 +150,42 @@
         </table>
     </form>
 </div>
+
 <script>
     // 存储支付金额到 sessionStorage
     var paymentAmount = '${sessionScope.cart.totalPrice}';
     sessionStorage.setItem('paymentAmount', paymentAmount);
+</script>
+
+
+<script>
+    // 在页面加载完毕后执行
+    document.addEventListener("DOMContentLoaded", function() {
+        // 获取确认提交订单按钮
+        var submitButton = document.querySelector('.submit_button input[type="submit"]');
+
+        // 添加点击事件监听器
+        submitButton.addEventListener('click', function(event) {
+            // 获取收货信息
+            var receiver = '${sessionScope.user.receiver}';
+            var address = '${sessionScope.user.address}';
+            var phone = '${sessionScope.user.phone}';
+
+            // 检查收货信息是否为空
+            if (!receiver || !address || !phone) {
+                // 阻止表单提交
+                event.preventDefault();
+
+                // 弹出提示框
+                var confirmation = confirm("无法提交订单，收货信息不完整。点击确定前往填写收货信息页面。");
+
+                // 如果用户确认前往，则跳转到填写收货信息页面
+                if (confirmation) {
+                    window.location.href = 'userinfo.jsp';
+                }
+            }
+        });
+    });
 </script>
 
 

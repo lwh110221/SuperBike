@@ -5,6 +5,7 @@
   Time: 19:36
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,7 +77,7 @@
 <div class="order-info">
     你的订单号为 <strong>${sessionScope.orderId}</strong>，付款时请备注订单号！
 </div><div id="main">
-    <form>
+    <form action="<c:url value="index.jsp"/>" onsubmit="return checkPaymentMethod()">
         <input type="hidden">
         <div class="mb-3">
             <label for="paymentAmount" class="form-label">支付金额：</label>
@@ -97,7 +98,7 @@
                 <img id="paymentCode" src="" alt="收款码" class="img-fluid">
             </div>
         </div>
-        <button type="button" class="btn btn-primary" onclick="window.location.href='index.jsp'">确认已支付</button>
+        <button type="submit" class="btn btn-primary">确认已支付</button>
     </form>
 
     <script>
@@ -122,6 +123,20 @@
 
             // 显示收款码图片
             paymentCodeRow.style.display = "block";
+        }
+    </script>
+
+    <%--//新加入--%>
+    <script>
+        function checkPaymentMethod() {
+            var wechatPayRadio = document.querySelector('input[name="pd_FrpId"][value="wechat-pay"]');
+            var aliPayRadio = document.querySelector('input[name="pd_FrpId"][value="ali-pay"]');
+
+            if (!wechatPayRadio.checked && !aliPayRadio.checked) {
+                alert("请选择支付方式并支付。");
+                return false; // 阻止表单提交
+            }
+            return true; // 允许表单提交
         }
     </script>
 </div>
