@@ -5,19 +5,192 @@
   Time: 8:55
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首页</title>
+
+    <%@include file="/pages/common/header.jsp"%>
+    <style>
+        #header {
+            background-color: #78b411;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        #logo_img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 50px;
+        }
+
+        #wel_word {
+            font-size: 100px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        #ul_dao {
+            font-size: 20px;
+            position: absolute;
+            right: 5%;
+            top: 80px;
+            font-family: "幼圆", serif;
+            background-color: #cbf1ff;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #ul_dao li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        #ul_dao li a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        #ul_dao li a:hover {
+            color: #007bff;
+        }
+
+        @media screen and (max-width: 768px) {
+            #ul_dao {
+                position: relative;
+                top: auto;
+                right: auto;
+                text-align: center;
+            }
+
+            #ul_dao li {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+        .um_span {
+            color: #161414;
+        }
+
+        #main {
+            margin-top: 20px;
+        }
+
+        #bike {
+            margin-top: 20px;
+        }
+
+        #bike_cc {
+            margin-bottom: 20px;
+        }
+
+        #b_list {
+            margin-top: 20px;
+            border-color: #a0b5b4;
+            background-color: #cbf1ff;
+        }
+
+        .bike_img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #my_footer {
+            margin-top: 20px;
+        }
+
+        #cartTotalCount {
+            font-size: 20px;
+        }
+
+        #cartLastName {
+            font-size: 20px;
+        }
+
+        .card {
+            margin-top: 20px;
+        }
+
+        .addToCart {
+            margin-top: 20px;
+        }
+
+        .bike_check {
+            margin-top: 20px;
+        }
+
+        .input-group {
+            margin-top: 20px;
+        }
+
+        #nameorbrand {
+            width: 300px;
+        }
+
+        #min {
+            width: 100px;
+        }
+
+        #max {
+            width: 100px;
+        }
+        .container-fluid {
+            padding: 10px;
+        }
+        .cart2 {
+            /*    固定在右下角*/
+            position: fixed;
+            right: 10px;
+            bottom: 50px;
+            display: inline-block;
+        }
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 8px;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 1;
+        }
+        .tip2 {
+            position: absolute;
+            top: -100px;
+            right: -10px;
+            transform: translateY(-50%);
+            background-color: #a4ee20; /* 设置背景色 */
+            border: 1px solid #ff6f00; /* 设置边框样式 */
+            padding: 5px; /* 设置内边距 */
+            border-radius: 5px; /* 设置边框圆角 */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 设置阴影效果 */
+            z-index: 1; /* 确保永远在最顶层 */
+            width: 80px; /* 固定宽度 */
+            text-align: center; /* 文本居中 */
+        }
+        .um_span1{
+            margin-top: 10px;
+            margin-right: 20px;
+            color: #156cc6;
+        }
+
+
+    </style>
 </head>
 <body>
 <div id="header" class="container-fluid">
     <div class="row align-items-center">
         <div class="col">
-            <span id="wel_word" class="ms-2">SupBikestore</span>
+            <img id="logo_img" alt="Logo" src="static/img/logo.jpg">
+            <span id="wel_word" class="ms-2">Bikestore</span>
         </div>
         <div class="col">
             <c:if test="${empty sessionScope.user}">
@@ -116,5 +289,27 @@
         </c:forEach>
     </div>
 </div>
+
+
+    <script type="text/javascript">
+        $(function () {
+            //给加入购物车绑定单击事件
+            $("button.addToCart").click(function () {
+                var bikeId = $(this).attr("bikeId");
+                //发ajax请求添加商品到购物车
+                $.getJSON("http://localhost:8080/Bike/cartServlet", "action=ajaxAddItem&id=" + bikeId, function (data) {
+                    $("#cartTotalCount").text(data.totalCount);
+                    $("#cartLastName").html(data.lastName+"已加入购物车");
+                });
+            });
+        });
+    </script>
+
+<div id="my_footer">
+    <%@include file="/pages/common/page_nav.jsp"%>
+    <%@include file="/pages/common/footer.jsp"%>
+</div>
+
 </body>
 </html>
+

@@ -12,24 +12,50 @@
     <title>我的订单</title>
     <%@include file="/pages/common/header.jsp"%>
 </head>
+<style>
+    #header {
+        background-color: #82cb2d;
+        padding: 20px;
+        border-radius: 30px;
+    }
+    #main {
+        margin-top: 20px;
+        background-color: #cbf1ff;
+        padding: 20px;
+        border-radius: 30px;
+    }
+
+    .wel_word {
+        font-size: 50px;
+        margin-left: 20px;
+    }
+
+    .table {
+        margin-top: 20px;
+    }
+
+    #logo_img {
+        margin-left: 20px;
+    }
+</style>
 <body>
 <div id="header">
     <img id="logo_img" alt="Logo" src="static/img/logo.jpg" style="width: 150px">
     <span class="wel_word">我的订单</span>
-
-    <!-- 登录成功之后所有相同的菜单  -->
     <%@ include file="/pages/common/login_success_menu.jsp" %>
-
 </div>
 
-<div id="main">
-    <table>
+<div id="main" class="container">
+    <table class="table">
+        <thead>
         <tr>
-            <td>日期</td>
-            <td>金额</td>
-            <td>状态</td>
-            <td>详情</td>
+            <th>日期</th>
+            <th>金额</th>
+            <th>状态</th>
+            <th>详情</th>
         </tr>
+        </thead>
+        <tbody>
         <c:forEach items="${requestScope.myOrders}" var="order">
             <tr>
                 <td>${ order.createTime }</td>
@@ -50,12 +76,13 @@
                 <td><a href="client/orderServlet?action=showOrderItem&orderId=${ order.orderId }">查看详情</a></td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
 </div>
 
-
-<!-- 这是页脚的引入 -->
-<%@ include file="/pages/common/footer.jsp" %>
+<footer>
+    <%@include file="/pages/common/footer.jsp" %>
+</footer>
 
 </body>
 </html>

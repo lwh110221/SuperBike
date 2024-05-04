@@ -7,13 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
-    .foot{
-        bottom: 0;
-        left: 0;
-        text-align: center;
-        width: 100%;
-    }
+	.foot{
+		bottom: 0;
+		left: 0;
+		text-align: center;
+		width: 100%;
+	}
 </style>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="foot">
 		<span>
 			SuperBike &copy;2024lwh

@@ -7,35 +7,57 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>注册成功页面</title>
     <%@include file="/pages/common/header.jsp"%>
-    <style type="text/css">
-        h1 {
+    <style>
+        #header {
             text-align: center;
-            margin-top: 200px;
+            padding: 20px 0;
         }
 
-        h1 a {
-            color:red;
+        #logo_img {
+            width: 150px;
+            float: left;
+        }
+
+        .wel_word {
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        #main {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #333;
+        }
+        .lead {
+            font-size: 1.5em;
+            color: #ff6f00;
         }
     </style>
 </head>
 <body>
 <div id="header">
-    <img id="logo_img" alt="Logo" src="static/img/logo.jpg" style="width: 150px">
-    <span class="wel_word"></span>
-    <%@include file="/pages/common/login_success_menu.jsp"%>
+    <img id="logo_img" alt="Logo" src="static/img/logo.jpg">
 </div>
 
-<div id="main">
-
-    <h1>注册成功! <a href="index.jsp">转到主页</a></h1>
-
+<div id="main" class="container">
+    <h1 class="display-4">恭喜您，注册成功！</h1>
+    <p class="lead">欢迎您来到SuperBike！</p>
+    <a href="pages/user/login.jsp" class="btn btn-primary btn-lg">立即登录</a><br>
+    <br>
+    <a href="index.jsp" class="btn btn-primary btn-lg">前往主页</a>
 </div>
 
 <%@include file="/pages/common/footer.jsp"%>
+
 </body>
 </html>

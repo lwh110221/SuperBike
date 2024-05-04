@@ -11,43 +11,39 @@
 <head>
     <title>我的订单</title>
     <%@include file="/pages/common/header.jsp"%>
+    <%@include file="/pages/common/managercomon.jsp"%>
 </head>
 <body>
-<div id="header">
-    <img id="logo_img" alt="Logo" src="static/img/logo.jpg" style="width: 150px">
-    <span class="wel_word">我的订单</span>
-
-    <!-- 登录成功之后所有相同的菜单  -->
-    <%@ include file="/pages/common/login_success_menu.jsp" %>
-
-</div>
-
-<div id="main">
-    <table>
-        <tr>
-            <td>编号</td>
-            <td>书名</td>
-            <td>数量</td>
-            <td>单价</td>
-            <td>总金额</td>
-            <td>订单编号</td>
-        </tr>
-        <c:forEach items="${requestScope.orderItems}" var="order">
+<div id="main1" class="container">
+    <div id="main">
+        <table class="table">
+            <thead>
             <tr>
-                <td>${ order.id}</td>
-                <td>${ order.name }</td>
-                <td>${ order.count }</td>
-                <td>${ order.price }</td>
-                <td>${ order.totalPrice }</td>
-                <td>${ order.orderId }</td>
+                <th>编号</th>
+                <th>书名</th>
+                <th>数量</th>
+                <th>单价</th>
+                <th>总金额</th>
+                <th>订单编号</th>
             </tr>
-        </c:forEach>
-    </table>
+            </thead>
+            <tbody>
+            <c:forEach items="${requestScope.orderItems}" var="order">
+                <tr>
+                    <td>${ order.id}</td>
+                    <td>${ order.name }</td>
+                    <td>${ order.count }</td>
+                    <td>${ order.price }</td>
+                    <td>${ order.totalPrice }</td>
+                    <td>${ order.orderId }</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 
-<!-- 这是页脚的引入 -->
-<%@ include file="/pages/common/footer.jsp" %>
 
 </body>
 </html>

@@ -6,11 +6,62 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div>
-    <span>欢迎<span class="um_span">${sessionScope.user.username}</span>进入</span>
-    <a href="client/orderServlet?action=myOrders">我的订单</a>
-    <a href="pages/user/userinfo.jsp">个人信息</a>
-    <a href="client/bikeServlet?action=pageOrder">热榜</a>
-    <a href="userServlet?action=logout">注销</a>&nbsp;&nbsp;
-    <a href="index.jsp">返回</a>
-</div>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    .navbar-custom {
+        background-color: #cbf1ff;
+        padding: 10px 0;
+        border-radius: 30px;
+    }
+    /* 调整菜单栏字体样式 */
+    .navbar-nav .nav-link {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        color: #333;
+        padding: 10px 15px;
+        transition: all 0.3s ease;
+        margin-right: 20px;
+    }
+
+    /* 悬停效果 */
+    .navbar-nav .nav-link:hover {
+        color: #007bff;
+    }
+
+    /* 激活状态 */
+    .navbar-nav .nav-link.active {
+        color: #007bff;
+    }
+
+    /* 调整欢迎文字样式 */
+    .navbar-text {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        color: #ff6f00;
+        margin-right: 20px;
+    }
+</style>
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+    <div class="container-fluid">
+        <span class="navbar-text">欢迎<span class="um_span">${sessionScope.user.username}</span></span>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="userServlet?action=logout">注销登录</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="client/orderServlet?action=myOrders">我的订单</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/user/userinfo.jsp">个人信息</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="client/bikeServlet?action=pageOrder">热销榜单</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.jsp">返回主页</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

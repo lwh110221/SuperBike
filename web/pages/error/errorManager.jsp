@@ -44,29 +44,29 @@
     </style>
 </head>
 <body>
-    <div id="header">
-        <img id="logo_img" alt="Logo" src="static/img/logo.jpg">
-    </div>
+<div id="header">
+    <img id="logo_img" alt="Logo" src="static/img/logo.jpg">
+</div>
 
-    <div id="main" class="container">
-        <div class="row">
-            <div class="col">
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <td>你没有管理员权限！</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="pages/user/login.jsp" class="btn btn-danger">管理员登录</a>
-                            <a href="index.jsp" class="btn btn-danger">返回首页</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+<div id="main" class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td>你没有管理员权限！</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="pages/user/login.jsp" class="btn btn-danger">管理员登录</a>
+                        <a href="index.jsp" class="btn btn-danger">返回首页</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 
 <%@include file="/pages/common/footer.jsp"%>
 

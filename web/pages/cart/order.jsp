@@ -12,50 +12,141 @@
     <title>提交订单</title>
     <%@include file="/pages/common/header.jsp"%>
     <div id="header">
-        <img id="logo_img" alt="Logo" src="static/img/logo.jpg" style="width: 150px">
-        <span class="wel_word">提交订单</span>
-        <%@include file="/pages/common/login_success_menu.jsp"%>
+        <img id="logo_img" alt="Logo" src="static/img/logo.jpg">
+        <h1 class="wel_word">提交订单</h1>
     </div>
+    <%@include file="/pages/common/login_success_menu.jsp"%>
 </head>
+<style>
+    body, html, div, table, tbody, tr, th, td, input {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Body styling */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+    }
+
+    /* Header styling */
+    #header {
+        background-color: #82cb2d;
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+        height: 170px;
+        border-radius: 20px;
+    }
+
+    #logo_img {
+        width: 150px;
+        float: left;
+    }
+
+    .wel_word {
+        float: left;
+        font-size: 60px;
+        margin-left: 20px;
+        margin-top: 50px;
+    }
+
+    /* Main content styling */
+    #main {
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgb(203, 241, 255);
+    }
+
+    /* Table styling */
+    #order_table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #order_table th, #order_table td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+    }
+
+    #order_table th {
+        background-color: #f2f2f2;
+    }
+
+    #order_table .total_label {
+        text-align: right;
+        font-weight: bold;
+    }
+
+    #order_table .total_amount {
+        font-weight: bold;
+        color: crimson;
+    }
+
+    /* Submit button styling */
+    .submit_button {
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    .submit_button input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #ff8400;
+        color: #0a0a0a;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit_button input[type="submit"]:hover {
+        background-color: #a4ee20;
+    }
+</style>
 <body>
 
 <div id="main">
     <form action="client/orderServlet?action=createOrder" method="post">
-        <table>
+        <table id="order_table">
+            <thead>
             <tr>
-                <td>名称</td>
-                <td>数量</td>
-                <td>单价</td>
-                <td>金额</td>
+                <th>名称</th>
+                <th>数量</th>
+                <th>单价</th>
+                <th>金额</th>
             </tr>
-
-            <td style="display: none;">
-                总金额：<input id="money" TYPE="text" NAME="money" size="6" value="${sessionScope.cart.totalPrice}" readonly="true"
-                              style="border:none;
-                                    background-color:transparent;
-                                    width: 90px;
-                                    text-align-all: center;
-                                    color: crimson">
-                <label for="money"></label>元
-            </td>
-
-
+            </thead>
+            <tbody>
             <c:if test="${not empty sessionScope.cart.items}">
                 <c:forEach items="${sessionScope.cart.items}" var="entry">
                     <tr>
                         <td>${entry.value.name}</td>
                         <td>
-                            <input class="updateCount" style="width: 70px;" bikeId="${entry.value.id}" type="text" value="${entry.value.count}" readonly="true">
+                            <input class="updateCount"
+                                   style="width: 70px;border: none;
+                                   text-align: center;"
+                                   bikeId="${entry.value.id}" type="text" value="${entry.value.count}" readonly="true">
                         </td>
                         <td>${entry.value.price}</td>
                         <td>${entry.value.totalPrice}</td>
                     </tr>
-                    <tr>
-                        <td colspan="2"><input type="submit" value="确认提交订单"></td>
-                    </tr>
                 </c:forEach>
             </c:if>
-
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="3" class="total_label">总金额：</td>
+                <td class="total_amount">${sessionScope.cart.totalPrice} 元</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="submit_button">
+                    <input type="submit" value="确认提交订单">
+                </td>
+            </tr>
+            </tfoot>
         </table>
     </form>
 </div>
@@ -69,6 +160,5 @@
 
 <%@include file="/pages/common/footer.jsp"%>
 
-</body>
 </body>
 </html>
