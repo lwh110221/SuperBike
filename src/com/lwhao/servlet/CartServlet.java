@@ -8,9 +8,9 @@ import com.lwhao.service.BikeService;
 import com.lwhao.service.impl.BikeServiceImpl;
 import com.lwhao.util.WebUtil;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ import java.util.Map;
  * @date : 2024/4/30 9:50
  * @Project : SuperBike
  */
-public class CartServlet {
+public class CartServlet extends BaseServlet {
     private BikeService bikeService = new BikeServiceImpl();
 
     /**

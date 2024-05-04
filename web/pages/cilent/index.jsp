@@ -181,14 +181,14 @@
             margin-right: 20px;
             color: #156cc6;
         }
-        .mm{
-            position: fixed;
-            bottom: 180px;
-            right: -55px;
-            transform: scale(0.5);
-            display: inline-block;
-            border-radius: 20px;
-        }
+        /*.mm{*/
+        /*    position: fixed;*/
+        /*    bottom: 180px;*/
+        /*    right: -55px;*/
+        /*    transform: scale(0.5);*/
+        /*    display: inline-block;*/
+        /*    border-radius: 20px;*/
+        /*}*/
 
     </style>
 </head>
@@ -296,11 +296,11 @@
         </c:forEach>
     </div>
 </div>
-<div class="mm">
-    <a href="pages/client/catline.jsp">
-        <img src="static/img/lwhmm.gif" alt="mm">
-    </a>
-</div>
+<%--<div class="mm">--%>
+<%--    <a href="pages/client/catline.jsp">--%>
+<%--        <img src="static/img/lwhmm.gif" alt="mm">--%>
+<%--    </a>--%>
+<%--</div>--%>
 
 
 

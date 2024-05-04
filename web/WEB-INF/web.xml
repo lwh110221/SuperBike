@@ -3,4 +3,117 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>com.lwhao.servlet.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/userServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BikeServlet</servlet-name>
+        <servlet-class>com.lwhao.servlet.BikeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BikeServlet</servlet-name>
+        <url-pattern>/bikemanager/bikeServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClientBikeServlet</servlet-name>
+        <servlet-class>com.lwhao.servlet.ClientBikeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClientBikeServlet</servlet-name>
+        <url-pattern>/client/bikeServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>KaptchaServlet</servlet-name>
+        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>KaptchaServlet</servlet-name>
+        <url-pattern>/kaptcha.jpg</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.lwhao.servlet.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cartServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClientOrderServlet</servlet-name>
+        <servlet-class>com.lwhao.servlet.ClientOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClientOrderServlet</servlet-name>
+        <url-pattern>/client/orderServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ManagerOrderServlet</servlet-name>
+        <servlet-class>com.lwhao.servlet.ManagerOrderServlet</servlet-class>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>ManagerOrderServlet</servlet-name>
+        <url-pattern>/bikemanager/orderServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+
+    <servlet>
+        <servlet-name>ManagerUserServlet</servlet-name>
+        <servlet-class>com.lwhao.servlet.ManagerUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManagerUserServlet</servlet-name>
+        <url-pattern>/bikemanager/UserServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+    <filter>
+        <filter-name>ManagerFilter</filter-name>
+        <filter-class>com.lwhao.filter.ManagerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ManagerFilter</filter-name>
+        <url-pattern>/pages/bikemanager/*</url-pattern>
+        <url-pattern>/bikemanager/bikeServlet</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>TransactionFilter</filter-name>
+        <filter-class>com.lwhao.filter.TransactionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TransactionFilter</filter-name>
+        <!-- /*表示当前工程下所有请求 -->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <error-page>
+        <!-- error-code是错误类型-->
+        <error-code>404</error-code>
+        <!-- 要跳转去的页面路径-->
+        <location>/pages/error/error404.jsp</location>
+    </error-page>
+
+    <error-page>
+        <!-- error-code是错误类型-->
+        <error-code>500</error-code>
+        <!-- 要跳转去的页面路径-->
+        <location>/pages/error/error500.jsp</location>
+    </error-page>
+
 </web-app>

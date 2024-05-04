@@ -5,9 +5,9 @@ import com.lwhao.bean.User;
 import com.lwhao.service.UserService;
 import com.lwhao.service.impl.UserServiceImpl;
 import com.lwhao.util.WebUtil;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
 
 
 import java.io.IOException;
