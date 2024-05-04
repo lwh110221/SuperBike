@@ -21,7 +21,7 @@
             height: 30px;
         }
         .login_banner {
-            background-image: url("static/img/background.png");
+            background-image: url("/static/img/background.png");
             background-size: cover;
             background-position: center;
             min-height: calc(100vh - 60px);
@@ -82,11 +82,11 @@
                         <input type="hidden" name="action" value="regist">
                         <div class="mb-3">
                             <label for="username" class="form-label">用户名称：</label>
-                            <input type="text" class="form-control" id="username" placeholder="请输入用户名" name="username" value="${requestScope.username}">
+                            <input type="text" class="form-control" id="username" placeholder="最少包含三个字母，长度为6到15位" name="username" value="${requestScope.username}">
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">用户密码：</label>
-                            <input type="password" class="form-control" id="password" placeholder="请输入密码" name="password" value="${requestScope.password}">
+                            <input type="password" class="form-control" id="password" placeholder="最少包含一个字母，长度为6到15位" name="password" value="${requestScope.password}">
                         </div>
                         <div class="mb-3">
                             <label for="repwd" class="form-label">确认密码：</label>
@@ -138,8 +138,8 @@
 
             // 获取用户名
             var usernameValue = $("#username").val();
-            // 验证用户名是否合法,规则如下：必须由字母，数字，下划线组成，并且长度为5到15位。
-            var usernameReg = /^\w{5,15}$/;
+            // 验证用户名是否合法,规则如下：必须最少包含三个字母，长度为6到15位。
+            var usernameReg = /^(.*[a-zA-Z].*){3}.{3,12}$/;
             // 验证用户信息
             if (!usernameReg.test(usernameValue)) {
                 // 提示用户
@@ -149,8 +149,8 @@
 
             // 获取密码
             var passwordValue = $("#password").val();
-            // 验证密码是否合法,规则如下：必须由字母，数字，下划线组成，并且长度为5到15位。
-            var passwordReg = /^\w{5,15}$/;
+            // 验证密码是否合法,规则如下：必须最少包含一个字母，长度为6到15位。
+            var passwordReg = /^(.*[a-zA-Z].*){1}.{5,14}$/;
             // 验证用户信息
             if (!passwordReg.test(passwordValue)) {
                 // 提示用户
@@ -191,5 +191,6 @@
     });
 </script>
 <%@include file="/pages/common/footer.jsp"%>
+<%@include file="/pages/common/efficacy.jsp"%>
 </body>
 </html>
