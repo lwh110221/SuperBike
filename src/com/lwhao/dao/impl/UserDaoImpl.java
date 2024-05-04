@@ -45,6 +45,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
      * @param user
      * @return
      */
+
     @Override
     public int saveUser(User user) {
         String sql = "insert into t_user(`username`,`password`,`email`,`address`,`receiver`,`phone`) values(?,?,?,?,?,?)";
