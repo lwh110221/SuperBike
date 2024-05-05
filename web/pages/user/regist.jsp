@@ -191,6 +191,5 @@
     });
 </script>
 <%@include file="/pages/common/footer.jsp"%>
-<%@include file="/pages/common/efficacy.jsp"%>
 </body>
 </html>

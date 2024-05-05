@@ -199,7 +199,7 @@
     </div>
     <div>
         <%@include file="/pages/common/footer.jsp"%>
-        <%@include file="/pages/common/efficacy.jsp"%>
     </div>
+</div>
 </body>
 </html>
