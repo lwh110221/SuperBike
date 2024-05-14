@@ -1,6 +1,5 @@
 package com.lwhao.dao;
 
-import com.lwhao.bean.CartItem;
 import com.lwhao.bean.OrderItem;
 
 import java.util.List;
