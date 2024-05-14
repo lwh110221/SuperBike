@@ -15,8 +15,18 @@ import java.util.List;
  * OrderItemDao接口
  */
 public interface OrderItemDao {
-        public int saveOrderItem(OrderItem orderItem);//保存订单项
+        /**
+         * 保存订单项
+         * @param orderItem 订单项
+         * @return 返回影响的行数
+         */
+        public int saveOrderItem(OrderItem orderItem);
 
-        public List<OrderItem> showOrderItem(String orderId);//根据订单号查询订单项
+        /**
+         * 展示订单项
+         * @param orderId
+         * @return
+         */
+        public List<OrderItem> showOrderItem(String orderId);
 
 }

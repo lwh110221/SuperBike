@@ -2,7 +2,7 @@
   <configuration default="false" name="Tomcat 8.5.99" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.99" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
     <option name="UPDATING_POLICY" value="restart-server" />
     <deployment>
-      <artifact name="SuperBike-Project:Web exploded">
+      <artifact name="SuperBike:Web exploded">
         <settings>
           <option name="CONTEXT_PATH" value="/Bike" />
         </settings>
@@ -83,6 +83,7 @@
       <option name="Make" enabled="true" />
       <option name="BuildArtifacts" enabled="true">
         <artifact name="SuperBike-Project:Web exploded" />
+        <artifact name="SuperBike:Web exploded" />
       </option>
     </method>
   </configuration>
