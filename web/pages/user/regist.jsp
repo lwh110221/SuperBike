@@ -21,7 +21,7 @@
             height: 30px;
         }
         .login_banner {
-            background-image: url("/static/img/background.png");
+            background-image: url("static/img/background.png");
             background-size: cover;
             background-position: center;
             min-height: calc(100vh - 60px);
