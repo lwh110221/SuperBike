@@ -11,6 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>自行车管理</title>
     <%@include file="/pages/common/header.jsp"%>
     <%@include file="/pages/common/managercomon.jsp"%>
@@ -105,8 +106,6 @@
         </table>
     </div>
 </div>
-<footer style="bottom: 15px">
-    <%@include file="/pages/common/page_nav.jsp"%>
-</footer>
+<%@include file="/pages/common/page_nav.jsp"%>
 </body>
 </html>

@@ -10,7 +10,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>编辑图书</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑自行车</title>
     <%@include file="/pages/common/header.jsp"%>
     <%@include file="/pages/common/managercomon.jsp"%>
 </head>

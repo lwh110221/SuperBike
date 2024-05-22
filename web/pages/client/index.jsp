@@ -190,6 +190,11 @@
         /*    border-radius: 20px;*/
         /*}*/
 
+        /*移动端布局*/
+        @media screen and (max-width: 768px){
+
+        }
+
     </style>
 </head>
 <body>
