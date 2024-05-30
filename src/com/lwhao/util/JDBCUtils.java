@@ -92,7 +92,7 @@ public class JDBCUtils {
                 }
             }
         }
-        //一定要执行remove操作，否则就会出错，因为tomcat底层使用了线程池技术
+        //执行remove操作，否则就会出错，因为tomcat底层使用了线程池技术
         conns.remove();
     }
 

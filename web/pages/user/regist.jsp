@@ -96,11 +96,6 @@
                             <label for="email" class="form-label">电子邮件：</label>
                             <input type="text" class="form-control" id="email" placeholder="请输入邮箱地址" name="email" value="${requestScope.email}">
                         </div>
-                        <div class="mb-3 d-flex align-items-center">
-                            <label for="code" class="form-label me-3">验证码：</label>
-                            <input type="text" class="form-control me-3" id="code" name="code" style="width: 80px;margin-top: 18px">
-                            <img id="code_img" alt="" src="kaptcha.jpg" style="width: 110px; height: 40px;">
-                        </div>
                         <input type="submit" value="注册" class="btn btn-primary" id="sub_btn">
                         <a href="bikemanager/bikeServlet" class="btn btn-secondary">返回登录</a>
                         <a style="float: right" href="/Bike/" class="btn btn-secondary">返回首页</a>
@@ -110,7 +105,6 @@
         </div>
     </div>
 </div>
-
 
 <script type="text/javascript">
     // 页面加载完成之后
@@ -127,10 +121,6 @@
 
             });
 
-        });
-
-        $("#code_img").click(function () {
-            this.src = "${basePath}kaptcha.jpg?d=" + new Date();
         });
 
         // 给注册按钮添加事件
@@ -167,7 +157,7 @@
                 return false;
             }
 
-            // 获取用户名
+            // 获取邮箱
             var emailValue = $("#email").val();
             // 验证邮件输入是否合法。
             var emailReg = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
@@ -175,13 +165,6 @@
             if (!emailReg.test(emailValue)) {
                 // 提示用户
                 $("span.errorMsg").text("邮件输入不合法！");
-                return false;
-            }
-            // 获取验证码信息
-            var codeValue = $("#code").val();
-            // 验证验证码不为空！
-            if (codeValue == "") {
-                $("span.errorMsg").text("验证码不能为空！")
                 return false;
             }
 

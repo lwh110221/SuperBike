@@ -115,13 +115,12 @@ public class ClientBikeServlet extends BaseServlet {
      */
     protected void pageOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1、获取请求的参数
-        //这里直接写死为50
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"),1);
         //2、调用BikeService.page(pageNo,pageSize)方法：返回page对象
         Page<Bike> page = bikeService.pageOrder();
         page.setUrl("client/bikeServlet?action=pageOrder");
         //3、保存Page对象到request域中
         req.setAttribute("page",page);
-        //4、请求转发到page/bikemanager/bike_manager.jsp页面
         req.getRequestDispatcher("/pages/client/salestop.jsp").forward(req,resp);
     }
 }

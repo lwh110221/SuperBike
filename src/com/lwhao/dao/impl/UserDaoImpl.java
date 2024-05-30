@@ -52,7 +52,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         return update(sql,user.getUsername(),user.getPassword(),user.getEmail(),user.getAddress(),user.getReceiver(),user.getPhone());
     }
 
-    /**
+        /**
      * 添加用户
      * @param user
      * @return
