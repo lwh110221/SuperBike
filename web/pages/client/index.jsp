@@ -19,21 +19,22 @@
             background-color: #78b411;
             padding: 10px 0;
         }
-
         #logo_img {
             width: 50px;
             height: 50px;
         }
-
+        .col-md-8{
+            background-color: #cbf1ff;
+        }
         #wel_word {
             font-size: 30px;
             font-weight: bold;
             color: #ffffff;
         }
         .nav-item{
-            color: #2b91f8;
             font-size: large;
             font-weight: bold;
+            color: #0a58ca;
         }
 
         .bike_img {
@@ -52,7 +53,7 @@
             bottom: 50px;
             width: 60px;
             height: 60px;
-            background-color: #007bff;
+            background-color: #1f3759;
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -74,11 +75,11 @@
             position: absolute;
             top: -10px;
             right: -10px;
-            background-color: red;
-            color: white;
+            background-color: #fffbfb;
+            color: #78b411;
             border-radius: 50%;
             padding: 5px 8px;
-            font-size: 15px;
+            font-size: 20px;
             font-weight: bold;
             line-height: 1;
         }
