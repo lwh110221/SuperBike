@@ -30,14 +30,6 @@
         <url-pattern>/client/bikeServlet</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>KaptchaServlet</servlet-name>
-        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>KaptchaServlet</servlet-name>
-        <url-pattern>/kaptcha.jpg</url-pattern>
-    </servlet-mapping>
 
     <servlet>
         <servlet-name>CartServlet</servlet-name>

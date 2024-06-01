@@ -28,6 +28,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+
         }
         .login_box {
             background-color: #fff;
@@ -35,8 +36,8 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 40px;
             max-width: 400px;
-            width: 100%;
             background-color: rgba(255, 255, 255, 0.5);
+            width: 50vw;
         }
         .login_form label {
             font-weight: bold;

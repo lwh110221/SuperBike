@@ -13,31 +13,17 @@
         position: relative;
     }
 
-    .pagination-input {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 25%;
-        margin-bottom: -15px;
-        margin-right: 10px;
-    }
     .alert-info {
         position: absolute;
         width: 100%;
         top: -12px;
         z-index: -1;
     }
-
 </style>
 
 <div class="container pagination-container">
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="${requestScope.page.url}&pageNo=1" aria-label="首页">
-                    <span aria-hidden="true">首页</span>
-                </a>
-            </li>
             <c:if test="${requestScope.page.pageNo > 1}">
                 <li class="page-item">
                     <a class="page-link" href="${requestScope.page.url}&pageNo=${requestScope.page.pageNo-1}" aria-label="上一页">
@@ -57,23 +43,11 @@
                     </a>
                 </li>
             </c:if>
-            <li class="page-item">
-                <a class="page-link" href="${requestScope.page.url}&pageNo=${requestScope.page.pageTotal}" aria-label="末页">
-                    <span aria-hidden="true">末页</span>
-                </a>
-            </li>
             <div class="alert alert-info" role="alert">
                 共${requestScope.page.pageTotal}页，${requestScope.page.pageTotalCount}条记录
             </div>
         </ul>
     </nav>
-
-    <form class="pagination-input">
-        <div class="input-group mb-3">
-            <input type="number" class="form-control" placeholder="跳转到第几页" id="pn_input" name="pn">
-            <button class="btn btn-primary" id="searchPageBtn" type="button">确定</button>
-        </div>
-    </form>
 </div>
 
 <!-- Bootstrap JS (necessary for Bootstrap's JavaScript plugins) -->
