@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
-
 /**
  * @author : Luowenhao221
  * @date : 2024/4/30 9:30

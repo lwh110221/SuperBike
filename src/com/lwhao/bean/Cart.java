@@ -69,7 +69,7 @@ public class Cart {
      * @param cartItem
      */
     public void addItem(CartItem cartItem) {
-        //先查看购物车中是否包含次商品，如果有的话，数量更新，总金额更新；如果没有，直接放到集合中即可
+        //先查看购物车中是否包含此商品，如果有的话，数量更新，总金额更新；如果没有，直接放到集合中即可
         CartItem item = items.get(cartItem.getId());
 
         if(item == null) {

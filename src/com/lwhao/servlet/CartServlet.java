@@ -43,10 +43,9 @@ public class CartServlet extends BaseServlet {
         cart.addItem(cartItem);
         req.getSession().setAttribute("lastName",cartItem.getName());
 
-        //返回购物车总数量和最后一个商品的名称
+        //返回购物车总数量
         Map<String,Object> resultMap = new HashMap<String,Object>();
         resultMap.put("totalCount",cart.getTotalCount());
-        resultMap.put("lastName",cartItem.getName());
         Gson gson = new Gson();
         String resultMapJsonString = gson.toJson(resultMap);
         resp.getWriter().write(resultMapJsonString);
