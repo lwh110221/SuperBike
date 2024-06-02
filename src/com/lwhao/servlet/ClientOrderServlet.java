@@ -39,9 +39,7 @@ public class ClientOrderServlet extends BaseServlet{
         Integer userId = loginUser.getId();
         String orderId = orderService.createOrder(cart,userId);
 
-        //req.setAttribute("orderId",orderId);
         req.getSession().setAttribute("orderId",orderId);
-        //req.getRequestDispatcher("/pages/cart/paid.jsp").forward(req,resp);
         resp.sendRedirect(req.getContextPath()+"/pages/cart/paid.jsp");
     }
 

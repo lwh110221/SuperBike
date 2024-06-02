@@ -85,8 +85,6 @@
 <script>
     // 当用户点击提交按钮时触发的函数
     function onSubmit() {
-        // 这里可以添加一些其他的表单验证逻辑
-
         // 弹出提交成功的提示框
         alert("SuperBikeTips：提交修改成功！");
     }
