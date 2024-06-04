@@ -66,6 +66,8 @@ public class UserServlet extends BaseServlet{
         } else {
             //保存用户登录的信息到session域中
             req.getSession().setAttribute("user",loginUser);
+            //保存用户ID到session域中
+            req.getSession().setAttribute("userId", loginUser.getId());
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         }
     }

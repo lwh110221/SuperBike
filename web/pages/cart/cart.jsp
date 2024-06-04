@@ -132,7 +132,14 @@
         })
     });
 
-</script><%@include file="/pages/common/footer.jsp"%>
+    console.log("购物车页面加载完成");
+    //输出session中的购物车信息
+    console.log("${sessionScope.user}");
+    console.log("${sessionScope.cart}");
+
+</script>
+<%@include file="/pages/common/footer.jsp"%>
+
 </body>
 </html>
 

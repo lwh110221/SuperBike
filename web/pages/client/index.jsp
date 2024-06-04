@@ -181,6 +181,9 @@
             });
         });
     });
+
+    //控制台输出session中的用户信息
+    console.log("${sessionScope.user}");
 </script>
 
 <div id="my_footer">
