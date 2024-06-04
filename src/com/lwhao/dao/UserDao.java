@@ -54,11 +54,13 @@ public interface UserDao {
     public User querybyUsername(String username);
     /**
      * 根据用户名和密码查询用户
+     *
+     * @param id
      * @param username
      * @param password
      * @return 返回null表示用户名或密码错误
      */
-    public User querybyUsernameAndPassword(String username,String password);
+    public User querybyUsernameAndPassword(Integer id, String username, String password);
 
     /**
      * 查询分页的总记录数
