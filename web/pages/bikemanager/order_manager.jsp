@@ -56,7 +56,7 @@
                     <td>
                         <c:choose>
                             <c:when test="${order.status==0}">
-                                <a href="bikemanager/orderServlet?action=sendOrder&orderId=${order.orderId}" class="btn btn-primary">确认发货</a>
+                                <button class="btn btn-primary sendOrder" data-order-id="${order.orderId}">确认发货</button>
                             </c:when>
                             <c:when test="${order.status == 1}">
                                 等待用户签收
@@ -73,6 +73,28 @@
         </table>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('.sendOrder').click(function(e) {
+            e.preventDefault();
+            var orderId = $(this).data('orderId');
+            $.ajax({
+                url: 'bikemanager/orderServlet',
+                type: 'GET',
+                data: {
+                    action: 'sendOrder',
+                    orderId: orderId
+                },
+                success: function(response) {
+                    location.reload();
+                },
+                error: function() {
+                    alert('请求失败');
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
