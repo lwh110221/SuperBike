@@ -15,32 +15,25 @@
         border-radius: 50px;
         padding: 20px;
         width: 85%;
-        /*    居中*/
         margin: 0 auto;
     }
-    .m-0{
+    .m-0 {
         font-size: 50px;
         color: white;
     }
-    footer{
+    footer {
         position: fixed;
         bottom: 0;
         width: 100%;
-
     }
-    #menu{
-        margin-top: -55px;
+    #menu {
+        margin-top: -100px;
     }
-    #logo_img{
-        margin-top: -20px;
-    }
-
 </style>
 <body>
 <div class="container2">
     <div id="header" class="d-flex justify-content-between align-items-center py-3">
         <img id="logo_img" alt="Logo" src="static/img/logo.jpg" style="width: 150px">
-        <h1 class="m-0">后台管理</h1>
     </div>
     <div id="menu">
         <%@include file="/pages/common/manager_menu.jsp"%>

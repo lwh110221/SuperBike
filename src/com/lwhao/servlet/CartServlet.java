@@ -176,4 +176,35 @@ public class CartServlet extends BaseServlet {
             req.getRequestDispatcher("/pages/cart/cart.jsp").forward(req, resp);
         }
 
+    protected void removeSelectedItems(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String[] selectedItemIds = req.getParameterValues("selectedItems");
+        if (selectedItemIds == null || selectedItemIds.length == 0) {
+            selectedItemIds = (String[]) req.getSession().getAttribute("selectedItemsIds");
+        }
+
+        if (selectedItemIds == null || selectedItemIds.length == 0) {
+            return;
+        }
+
+        Cart cart = (Cart) req.getSession().getAttribute("cart");
+        if (cart != null) {
+            for (String idStr : selectedItemIds) {
+                int id = Integer.parseInt(idStr);
+                cart.deleteItem(id);
+
+                // 获取用户ID
+                int userId = (int) req.getSession().getAttribute("userId");
+                // 从数据库中删除商品信息
+                cartDao.deleteCartItem(id, userId);
+            }
+        }
+
+        req.getSession().removeAttribute("selectedItems");
+        req.getSession().removeAttribute("selectedItemsIds");
+        req.getSession().removeAttribute("totalPrice");
+    }
+
+
+
+
 }

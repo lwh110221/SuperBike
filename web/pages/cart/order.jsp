@@ -118,18 +118,15 @@
             </tr>
             </thead>
             <tbody>
-            <c:if test="${not empty sessionScope.cart.items}">
-                <c:forEach items="${sessionScope.cart.items}" var="entry">
+            <c:if test="${not empty selectedItems}">
+                <c:forEach items="${selectedItems}" var="entry">
                     <tr>
-                        <td>${entry.value.name}</td>
+                        <td>${entry.name}</td>
                         <td>
-                            <input class="updateCount"
-                                   style="width: 70px;border: none;
-                                   text-align: center;"
-                                   bikeId="${entry.value.id}" type="text" value="${entry.value.count}" readonly="true">
+                            <input style="width: 70px;border: none; text-align: center;" type="text" value="${entry.count}" readonly="true">
                         </td>
-                        <td>${entry.value.price}</td>
-                        <td>${entry.value.totalPrice}</td>
+                        <td>${entry.price}</td>
+                        <td>${entry.totalPrice}</td>
                     </tr>
                 </c:forEach>
             </c:if>
@@ -137,7 +134,7 @@
             <tfoot>
             <tr>
                 <td colspan="3" class="total_label">总金额：</td>
-                <td class="total_amount">${sessionScope.cart.totalPrice} 元</td>
+                <td class="total_amount">${totalPrice} 元</td>
             </tr>
             <tr>
                 <td colspan="4" class="submit_button">
@@ -150,13 +147,9 @@
 </div>
 
 <script>
-    // 存储支付金额到 sessionStorage
-    var paymentAmount = '${sessionScope.cart.totalPrice}';
+    var paymentAmount = '${totalPrice}';
     sessionStorage.setItem('paymentAmount', paymentAmount);
 
-
-
-    // 在页面加载完毕后执行
     document.addEventListener("DOMContentLoaded", function() {
         var submitButton = document.querySelector('.submit_button input[type="submit"]');
         submitButton.addEventListener('click', function(event) {
@@ -164,13 +157,8 @@
             var address = '${sessionScope.user.address}';
             var phone = '${sessionScope.user.phone}';
             if (!receiver || !address || !phone) {
-                // 阻止表单提交
                 event.preventDefault();
-
-                // 弹出提示框
                 var confirmation = confirm("无法提交订单，收货信息不完整。点击确定前往填写收货信息页面。");
-
-                // 如果用户确认前往，则跳转到填写收货信息页面
                 if (confirmation) {
                     window.location.href = 'pages/user/userinfo.jsp';
                 }

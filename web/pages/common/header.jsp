@@ -22,12 +22,8 @@
 
 <%--引用--%>
 
-<link type="text/css" rel="stylesheet" href="static/css/bootstrap.css" >
 <link type="text/css" rel="stylesheet" href="static/css/bootstrap.min.css" >
-<script type="text/javascript" src="static/script/jquery-3.7.1.js"></script>
 <script type="text/javascript" src="static/script/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="static/script/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="static/script/bootstrap.bundle.js"></script>
 <script type="text/javascript" src="static/script/bootstrap.min.js"></script>
-<script type="text/javascript" src="static/script/bootstrap.js"></script>
 

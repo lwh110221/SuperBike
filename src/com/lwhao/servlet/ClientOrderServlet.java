@@ -1,9 +1,8 @@
 package com.lwhao.servlet;
 
-import com.lwhao.bean.Order;
-import com.lwhao.bean.OrderItem;
-import com.lwhao.bean.Cart;
-import com.lwhao.bean.User;
+import com.lwhao.bean.*;
+import com.lwhao.dao.CartDao;
+import com.lwhao.dao.impl.CartDaoImpl;
 import com.lwhao.service.OrderService;
 import com.lwhao.service.impl.OrderServiceImpl;
 import javax.servlet.ServletException;
@@ -12,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +22,8 @@ import java.util.List;
  */
 public class ClientOrderServlet extends BaseServlet{
     private OrderService orderService = new OrderServiceImpl();
+    private CartDao cartDao = new CartDaoImpl();
+
 
     /**
      * 生成订单
@@ -32,16 +35,43 @@ public class ClientOrderServlet extends BaseServlet{
     protected void createOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Cart cart = (Cart) req.getSession().getAttribute("cart");
         User loginUser = (User) req.getSession().getAttribute("user");
-        if(loginUser==null) {
-            req.getRequestDispatcher("/pages/user/login.jsp").forward(req,resp);
+        List<CartItem> selectedItems = (List<CartItem>) req.getSession().getAttribute("selectedItems");
+
+        if (loginUser == null) {
+            req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
             return;
         }
-        Integer userId = loginUser.getId();
-        String orderId = orderService.createOrder(cart,userId);
 
-        req.getSession().setAttribute("orderId",orderId);
-        resp.sendRedirect(req.getContextPath()+"/pages/cart/paid.jsp");
+        if (selectedItems == null || selectedItems.isEmpty()) {
+            resp.sendRedirect(req.getContextPath() + "/pages/cart/cart.jsp");
+            return;
+        }
+
+        Cart selectedCart = new Cart();
+        for (CartItem item : selectedItems) {
+            selectedCart.addItem(item);
+        }
+
+        Integer userId = loginUser.getId();
+        String orderId = orderService.createOrder(selectedCart, userId);
+
+        req.getSession().setAttribute("orderId", orderId);
+
+        // 删除选中的商品逻辑
+        for (CartItem item : selectedItems) {
+            cart.deleteItem(item.getId());
+            cartDao.deleteCartItem(item.getId(), userId);
+        }
+
+        req.getSession().removeAttribute("selectedItems");
+        req.getSession().removeAttribute("selectedItemsIds");
+        req.getSession().removeAttribute("totalPrice");
+
+        resp.sendRedirect(req.getContextPath() + "/pages/cart/paid.jsp");
     }
+
+
+
 
     /**
      * 判断是否登录
@@ -117,4 +147,48 @@ public class ClientOrderServlet extends BaseServlet{
             request.getRequestDispatcher("/pages/order/orderItem.jsp").forward(request, response);
         }
     }
+
+    /**
+     * 提交选中的商品
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+
+    protected void submitSelectedItems(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String[] selectedItemIds = req.getParameterValues("selectedItems");
+        if (selectedItemIds == null || selectedItemIds.length == 0) {
+            resp.sendRedirect(req.getContextPath() + "/pages/cart/cart.jsp");
+            return;
+        }
+
+        Cart cart = (Cart) req.getSession().getAttribute("cart");
+        if (cart == null) {
+            resp.sendRedirect(req.getContextPath() + "/pages/cart/cart.jsp");
+            return;
+        }
+
+        List<CartItem> selectedItems = new ArrayList<>();
+        BigDecimal totalPrice = BigDecimal.ZERO;
+
+        for (String idStr : selectedItemIds) {
+            int id = Integer.parseInt(idStr);
+            CartItem item = cart.getItem(id);
+            if (item != null) {
+                selectedItems.add(item);
+                totalPrice = totalPrice.add(item.getTotalPrice());
+            }
+        }
+
+        req.getSession().setAttribute("selectedItems", selectedItems);
+        req.getSession().setAttribute("selectedItemsIds", selectedItemIds);
+        req.getSession().setAttribute("totalPrice", totalPrice);
+
+        resp.sendRedirect(req.getContextPath() + "/pages/cart/order.jsp");
+    }
+
+
+
+
 }

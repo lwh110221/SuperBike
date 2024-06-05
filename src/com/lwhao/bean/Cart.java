@@ -84,4 +84,9 @@ public class Cart {
             cartItem.setTotalPrice(cartItem.getPrice().multiply(new BigDecimal(cartItem.getCount())));
         }
     }
+
+    public CartItem getItem(Integer id) {
+        return items.get(id);
+    }
 }
+

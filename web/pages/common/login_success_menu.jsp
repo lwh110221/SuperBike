@@ -7,9 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="static/css/bootstrap.min.css" >
+<script type="text/javascript" src="static/script/bootstrap.bundle.min.js"></script>
 <style>
     .navbar-custom {
-        background-color: #cbf1ff;
+        background-color: #f0fcff;
         padding: 10px 0;
         border-radius: 30px;
     }
@@ -41,10 +43,15 @@
         margin-right: 20px;
     }
 </style>
+
 <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
     <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <span class="navbar-text">欢迎<span class="um_span">${sessionScope.user.username}</span></span>
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="userServlet?action=logout">注销登录</a>
