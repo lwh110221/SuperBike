@@ -122,7 +122,7 @@
                     <tr>
                         <td>${entry.name}</td>
                         <td>
-                            <input style="width: 70px;border: none; text-align: center;" type="text" value="${entry.count}" readonly="true">
+                            <input style="width: 70px;border: none; text-align: center;" type="text" value="${entry.count}" readonly="readonly">
                         </td>
                         <td>${entry.price}</td>
                         <td>${entry.totalPrice}</td>

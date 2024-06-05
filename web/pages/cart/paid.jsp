@@ -60,12 +60,14 @@
             font-size: 1.5em;
             color: #f7ebeb;
         }
-        .btn-primary {
-            background-color: #82cb2d;
-            border-color: #f1f1f1;
-            /* 居中*/
-            display: block;
+        button.btn.btn-primary {
             margin: 0 auto;
+            display: block;
+            font-weight: bold;
+        }
+        #paymentAmount{
+            font-size: 1.5em;
+            color: #ff6f00;
         }
     </style>
 </head>
@@ -83,9 +85,9 @@
             <label for="paymentAmount" class="form-label">支付金额：</label>
             <span id="paymentAmount"></span>元
         </div>
-        <div class="mb-3 d-flex justify-content-center"> <!-- 使用Bootstrap的d-flex和justify-content-center使选项框水平居中 -->
-            <div class="form-check me-3"> <!-- 使用me-3添加右侧间距 -->
-                <input class="form-check-input" type="radio" name="pd_FrpId" value="wechat-pay" onchange="showPaymentCode('wechat-pay')">
+        <div class="mb-3 d-flex justify-content-center">
+            <div class="form-check me-3">
+                <input class="form-check-input" type="radio" name="pd_FrpId" value="wechat-pay" onchange="showPaymentCode('wechat-pay')" checked>
                 <label class="form-check-label">微信支付</label>
             </div>
             <div class="form-check">
@@ -110,6 +112,11 @@
     </script>
 
     <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+            showPaymentCode('wechat-pay');
+        });
+
         function showPaymentCode(paymentMethod) {
             var paymentCodeRow = document.getElementById("paymentCodeRow");
             var paymentCodeImg = document.getElementById("paymentCode");
