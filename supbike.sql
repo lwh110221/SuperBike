@@ -3,15 +3,15 @@
 
  Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 50726
+ Source Server Version : 80012
  Source Host           : localhost:3306
  Source Schema         : supbike
 
  Target Server Type    : MySQL
- Target Server Version : 50726
+ Target Server Version : 80012
  File Encoding         : 65001
 
- Date: 05/05/2024 17:33:40
+ Date: 05/06/2024 18:52:02
 */
 
 SET NAMES utf8mb4;
@@ -32,10 +32,32 @@ CREATE TABLE `t_bike`  (
   `classification` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `img_path` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci PACK_KEYS = 1 ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci PACK_KEYS = 1 ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_bike
+-- ----------------------------
+INSERT INTO `t_bike` VALUES (1, 'TCR Advanced SL 0 - DA', 80800.00, 'Giant', 0, 80, '全新PCR一脉相承Giant公路车家族的基因，经过市场验证的OverDrive内走方案，搭配上精雕细琢，简洁精炼的外观造型。巨值、巨快、巨好骑！', '公路车', 'static/img/TCR Advanced SL 0 - DA.jpg');
+INSERT INTO `t_bike` VALUES (2, 'Fastroad 16', 1598.00, 'Giant', 0, 80, 'Fastroad系列16款公路自行车，32寸，轻便皮实耐造', '公路车', 'static/img/Fastroad16.jpg');
+INSERT INTO `t_bike` VALUES (3, 'ATX-660', 1799.00, 'Giant', 0, 80, '捷安特atx系列入门山地自行车，32速变速，铝合金车架', '山地车', 'static/img/ATX-660.jpg');
+INSERT INTO `t_bike` VALUES (4, 'XTC820', 3998.00, 'Giant', 0, 80, '全新XTC系列山地自行车', '山地车', 'static/img/xtc820.jpg');
+INSERT INTO `t_bike` VALUES (5, 'Rc-2000', 1999.00, '迪卡侬', 0, 80, '轻便型山地自行车', '公路车', 'static/img/xdsjpg.jpg');
+INSERT INTO `t_bike` VALUES (6, 'Camp GX200', 1920.00, 'Camp', 0, 80, '坎普公路自行车', '公路车', 'static/img/GX200.jpg');
+
+-- ----------------------------
+-- Table structure for t_cart
+-- ----------------------------
+DROP TABLE IF EXISTS `t_cart`;
+CREATE TABLE `t_cart`  (
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`user_id`, `product_id`) USING BTREE,
+  INDEX `product_id`(`product_id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+
+-- ----------------------------
+-- Records of t_cart
 -- ----------------------------
 
 -- ----------------------------
@@ -90,15 +112,18 @@ CREATE TABLE `t_user`  (
   `address` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `receiver` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `adminornot` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否管理员',
+  `adminornot` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'no',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `username`(`username`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES (1, 'adminlwh', 'admin', 'lwh110221@outlook.com', NULL, NULL, NULL, 'yes');
+INSERT INTO `t_user` VALUES (1, 'admin', 'admin', 'lwh110221@outlook.com', '昆明', '啊啊啊', '11111', 'yes');
+INSERT INTO `t_user` VALUES (2, 'yuchao', '123456', 'yuchao@163.com', '萨格', '劳达', '113455', 'no');
+INSERT INTO `t_user` VALUES (3, 'songjm', '123456', 'sjm@qq.com', '洛杉矶', 'sss', '12345777', 'no');
+INSERT INTO `t_user` VALUES (4, 'gege', '123456', 'haogege@outlook.com', '云南昆明', 'admin', '12345555', 'no');
 
 -- ----------------------------
 -- Triggers structure for table t_order_item
