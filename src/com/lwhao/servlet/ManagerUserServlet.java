@@ -22,7 +22,7 @@ public class ManagerUserServlet extends BaseServlet {
     private UserService userService = new UserServiceImpl();
 
     /**
-     * 查看所有用户
+     * 增加用户
      * @param req
      * @param resp
      * @throws ServletException
@@ -33,7 +33,6 @@ public class ManagerUserServlet extends BaseServlet {
         pageNo+=1;
         User user = (User) WebUtils.copyParamToBean(req.getParameterMap(),new User());
         userService.addUser(user);
-        //req.getRequestDispatcher("/bikemanager/bikeServlet?action=list").forward(req,resp);
         resp.sendRedirect(req.getContextPath() + "/bikemanager/UserServlet?action=page&pageNo=" +pageNo);
     }
 

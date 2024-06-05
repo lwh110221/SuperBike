@@ -84,7 +84,6 @@
         color: crimson;
     }
 
-    /* Submit button styling */
     .submit_button {
         text-align: center;
         padding-top: 20px;
