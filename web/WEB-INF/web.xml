@@ -71,6 +71,15 @@
         <servlet-name>ManagerUserServlet</servlet-name>
         <url-pattern>/bikemanager/UserServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>cartServlet</servlet-name>
+        <servlet-class>com.lwhao.servlet.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cartServlet</servlet-name>
+        <url-pattern>/client/cartServlet</url-pattern>
+    </servlet-mapping>
+
 
 
 

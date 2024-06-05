@@ -8,7 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -165,7 +165,7 @@
 </div>
 
 <div class="cart">
-    <a href="pages/cart/cart.jsp">
+    <a id="viewCartLink" href="cartServlet?action=viewCart">
         <img src="static/img/cart.png" alt="Cart">
         <span id="cartTotalCount" class="cart-count">${sessionScope.cart.totalCount}</span>
     </a>
@@ -173,17 +173,33 @@
 
 <script type="text/javascript">
     $(function () {
+        // 获取用户信息
+        var user = "${sessionScope.user}";
+
         // 加入购物车事件
         $("button.addToCart").click(function () {
+            if (!user || user === "null") {
+                window.location.href = "pages/user/login.jsp";
+                return;
+            }
+
             var bikeId = $(this).attr("bikeId");
             $.getJSON("/Bike/cartServlet", { action: "ajaxAddItem", id: bikeId }, function (data) {
                 $("#cartTotalCount").text(data.totalCount);
             });
         });
-    });
 
-    //控制台输出session中的用户信息
-    console.log("${sessionScope.user}");
+        // 前往购物车链接点击事件
+        $("#viewCartLink").click(function (e) {
+            if (!user || user === "null") {
+                e.preventDefault();
+                window.location.href = "pages/user/login.jsp";
+            }
+        });
+
+        // 控制台输出session中的用户信息
+        console.log(user);
+    });
 </script>
 
 <div id="my_footer">

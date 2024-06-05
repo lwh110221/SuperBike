@@ -17,35 +17,46 @@ public class CartItem {
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public Integer getCount() {
         return count;
     }
+
     public void setCount(Integer count) {
         this.count = count;
     }
+
     public BigDecimal getPrice() {
         return price;
     }
+
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
     public BigDecimal getTotalPrice() {
-        return totalPrice;
+        if (totalPrice == null && price != null && count != null) {
+            totalPrice = price.multiply(new BigDecimal(count));
+        }
+        return totalPrice != null ? totalPrice : BigDecimal.ZERO;
     }
+
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 
-    // 构造器
     public CartItem() {
     }
 
@@ -57,15 +68,14 @@ public class CartItem {
         this.totalPrice = totalPrice;
     }
 
-    // 重写toString方法
     @Override
     public String toString() {
-    return "CartItem{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", count=" + count +
-            ", price=" + price +
-            ", totalPrice=" + totalPrice +
-            '}';
+        return "CartItem{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", count=" + count +
+                ", price=" + price +
+                ", totalPrice=" + totalPrice +
+                '}';
     }
 }
