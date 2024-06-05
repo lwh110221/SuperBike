@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  Author : luowenhao221
-  Date: 2024/5/4
-  Time: 16:41
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -46,7 +39,7 @@
 </div>
 
 <div id="main" class="container">
-    <table class="table">
+    <table class="table table-striped">
         <thead>
         <tr>
             <th>日期</th>
@@ -63,17 +56,19 @@
                 <td>
                     <c:choose>
                         <c:when test="${ order.status == 0 }">
-                            未发货
+                            <span class="badge bg-warning">未发货</span>
                         </c:when>
                         <c:when test="${ order.status == 1 }">
-                            <a href="client/orderServlet?action=receivedOrder&orderId=${ order.orderId }">确认收货</a>
+                            <button class="btn btn-primary confirm-button" data-order-id="${ order.orderId }">确认收货</button>
                         </c:when>
                         <c:when test="${ order.status == 2 }">
-                            已收货
+                            <span class="badge bg-success">已收货</span>
                         </c:when>
                     </c:choose>
                 </td>
-                <td><a href="client/orderServlet?action=showOrderItem&orderId=${ order.orderId }">查看详情</a></td>
+                <td>
+                    <a href="client/orderServlet?action=showOrderItem&orderId=${ order.orderId }" class="btn btn-info">查看详情</a>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
@@ -84,6 +79,25 @@
     <%@include file="/pages/common/footer.jsp" %>
 </footer>
 
+<script>
+    $(document).ready(function() {
+        $(".confirm-button").click(function() {
+            var orderId = $(this).data("order-id");
+            var button = $(this);
+            $.ajax({
+                type: "POST",
+                url: "client/orderServlet",
+                data: { action: "receivedOrder", orderId: orderId },
+                success: function(response) {
+                    button.closest("td").html('<span class="badge bg-success">已收货</span>');
+                },
+                error: function() {
+                    alert("确认收货失败，请稍后再试");
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
-

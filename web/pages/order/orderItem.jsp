@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>订单详情</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <%@include file="/pages/common/header.jsp"%>
 </head>
 <style>
