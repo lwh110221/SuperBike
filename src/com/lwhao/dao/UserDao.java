@@ -76,4 +76,12 @@ public interface UserDao {
      */
 
     public List<User> queryForPageItems(int begin, int pageSize);
+
+    /**
+     * 查询所有用户，除了管理员
+     * @return
+     */
+
+    int updateAdminStatus(int userId, String adminStatus);
+    List<User> queryUsersExcludingAdmin();
 }

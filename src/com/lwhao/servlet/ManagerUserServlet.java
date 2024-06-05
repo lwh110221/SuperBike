@@ -120,4 +120,24 @@ public class ManagerUserServlet extends BaseServlet {
         //4、请求转发到page/bikemanager/bike_manager.jsp页面
         req.getRequestDispatcher("/pages/bikemanager/user_manager.jsp").forward(req,resp);
     }
+
+
+    protected void showPermissions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User user = (User) req.getSession().getAttribute("user");
+        if (user != null && user.getId() == 1) {
+            List<User> users = userService.queryUsersExcludingAdmin();
+            req.setAttribute("users", users);
+            req.getRequestDispatcher("/pages/bikemanager/user_permission.jsp").forward(req, resp);
+        } else {
+            req.setAttribute("msg", "你不是超管");
+            req.getRequestDispatcher("/pages/bikemanager/manager.jsp").forward(req, resp);
+        }
+    }
+
+    protected void updateAdminStatus(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int userId = Integer.parseInt(req.getParameter("userId"));
+        String adminStatus = req.getParameter("adminStatus");
+        userService.updateAdminStatus(userId, adminStatus);
+        resp.getWriter().write("success");
+    }
 }

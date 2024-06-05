@@ -76,4 +76,11 @@ public interface UserService {
     public Page<User> page(int pageNo, int pageSize);
 
 
+    /**
+     * 权限管理
+     * @return
+     */
+
+    List<User> queryUsersExcludingAdmin();
+    void updateAdminStatus(int userId, String adminStatus);
 }

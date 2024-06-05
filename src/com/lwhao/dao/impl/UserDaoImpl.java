@@ -138,4 +138,16 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         return queryForList(User.class,sql,begin,pageSize);
     }
 
+    @Override
+    public List<User> queryUsersExcludingAdmin() {
+        String sql = "SELECT * FROM t_user WHERE id != 1";
+        return queryForList(User.class, sql);
+    }
+
+    @Override
+    public int updateAdminStatus(int userId, String adminStatus) {
+        String sql = "UPDATE t_user SET adminornot=? WHERE id=?";
+        return update(sql, adminStatus, userId);
+    }
+
 }

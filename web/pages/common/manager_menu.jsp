@@ -1,12 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  Author : luowenhao221
-  Date: 2024/5/4
-  Time: 16:18
-  To change this template use File | Settings | File Templates.
---%>
+<!-- manager_menu.jsp -->
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link type="text/css" rel="stylesheet" href="static/css/bootstrap.min.css" >
+<link type="text/css" rel="stylesheet" href="static/css/bootstrap.min.css">
 <script type="text/javascript" src="static/script/bootstrap.bundle.min.js"></script>
 
 <style>
@@ -53,6 +47,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="bikemanager/orderServlet?action=showTotal">总账单</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="bikemanager/UserServlet?action=showPermissions">权限设置</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.jsp">返回主页</a>

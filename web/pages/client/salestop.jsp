@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  Author : luowenhao221
-  Date: 2024/4/30
-  Time: 8:50
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -15,41 +8,39 @@
     <title>自行车热销榜单</title>
     <%@include file="/pages/common/header.jsp"%>
     <style>
-        body {
-            padding-top: 4rem;
-            background-color: #fffefc;
+        #topbar {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
         }
         #logo_img {
-            width: 150px;
+            width: 50px;
+            margin-right: 10px;
         }
         .wel_word {
-            font-size: 2.5rem;
+            font-size: 24px;
             font-weight: bold;
-            color: #f9fcff;
-            margin-bottom: 20px;
         }
-        #topbar {
-            background-color: #82cb2d;
-            color: #ffffff;
+        #main {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        #topbar a {
-            color: #ffffff;
+        table {
+            margin-top: 20px;
         }
-        #main table {
-            height: 350px;
+        th, td {
+            text-align: center;
         }
-        #main table td {
-            padding: 0.75rem;
-            vertical-align: middle;
-        }
-        #main table tr:first-child {
+        .btn-outline-light {
+            color: #fef1f1;
+            background-color: #0a53be;
             font-weight: bold;
-            background-color: #f8f9fa;
         }
-        .btn-outline-light{
-            background-color: #cbf1ff;
-            position: fixed;
-            right: 10%;
+        .btn-outline-light:hover {
+            background-color: #2299ff;
+            color: white;
         }
     </style>
 </head>
@@ -59,12 +50,12 @@
     <div id="topbar" class="py-2">
         <div class="container">
             <div class="row justify-content-between align-items-center">
-                <div class="col-auto">
+                <div class="col-auto d-flex align-items-center">
                     <img id="logo_img" alt="Logo" src="static/img/logo.jpg">
                     <span class="wel_word">自行车热销榜单</span>
                 </div>
                 <div class="col-auto">
-                    <a style="color: #000000" href="index.jsp" class="btn btn-outline-light">返回主页</a>
+                    <a href="index.jsp" class="btn btn-outline-light">返回主页</a>
                 </div>
             </div>
         </div>
@@ -72,8 +63,8 @@
 </header>
 
 <div id="main" class="container">
-    <table class="table table-bordered">
-        <thead>
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark">
         <tr>
             <th scope="col">排名</th>
             <th scope="col">型号</th>
@@ -83,10 +74,10 @@
         </tr>
         </thead>
         <tbody>
-        <%int i=1;%>
+        <% int i = 1; %>
         <c:forEach items="${requestScope.page.items}" var="bike">
             <tr>
-                <td><%=i++%></td>
+                <td><%= i++ %></td>
                 <td>${bike.name}</td>
                 <td>${bike.price}</td>
                 <td>${bike.brand}</td>

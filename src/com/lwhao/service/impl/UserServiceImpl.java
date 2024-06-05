@@ -18,7 +18,7 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
-    private UserDao userDao = new UserDaoImpl();//实例化UserDaoImpl对象
+    private UserDao userDao = new UserDaoImpl();
 
     /**
      * 注册用户
@@ -136,5 +136,16 @@ public class UserServiceImpl implements UserService {
         page.setItems(items);
 
         return page;
+    }
+
+
+    @Override
+    public List<User> queryUsersExcludingAdmin() {
+        return userDao.queryUsersExcludingAdmin();
+    }
+
+    @Override
+    public void updateAdminStatus(int userId, String adminStatus) {
+        userDao.updateAdminStatus(userId, adminStatus);
     }
 }

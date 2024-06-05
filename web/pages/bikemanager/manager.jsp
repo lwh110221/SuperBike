@@ -28,8 +28,14 @@
     </style>
 </head>
 <body>
-
-
+<script>
+    $(document).ready(function() {
+        var msg = "${msg}";
+        if (msg) {
+            alert(msg);
+        }
+    });
+</script>
 <div id="main">
     <h1>欢迎进入后台管理系统</h1>
 </div>
