@@ -57,13 +57,13 @@
                     <a class="nav-link" href="userServlet?action=logout">注销登录</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="client/bikeServlet?action=pageOrder">热销榜单</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="client/orderServlet?action=myOrders">我的订单</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="pages/user/userinfo.jsp">个人信息</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="client/bikeServlet?action=pageOrder">热销榜单</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.jsp">返回主页</a>

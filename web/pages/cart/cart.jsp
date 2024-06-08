@@ -133,7 +133,7 @@
 <script type="text/javascript">
     $(function () {
         $("a.deleteItem").click(function () {
-            return confirm("你确定要删除【"+$(this).parent().parent().find("td:first").text() +"】么？");
+            return confirm("你确定要删除？");
         });
         $("#clearCart").click(function () {
             return confirm("你确定要清空购物车么？");

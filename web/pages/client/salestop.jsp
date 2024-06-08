@@ -8,9 +8,16 @@
     <title>自行车热销榜单</title>
     <%@include file="/pages/common/header.jsp"%>
     <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+        }
         #topbar {
-            background-color: #f8f9fa;
+            background-color: #78b411;
+            color: white;
             border-bottom: 1px solid #dee2e6;
+            padding: 10px 0;
         }
         #logo_img {
             width: 50px;
@@ -19,6 +26,15 @@
         .wel_word {
             font-size: 24px;
             font-weight: bold;
+        }
+        .btn-outline-light {
+            color: white;
+            border: 1px solid white;
+            font-weight: bold;
+        }
+        .btn-outline-light:hover {
+            background-color: white;
+            color: #343a40;
         }
         #main {
             margin-top: 20px;
@@ -29,18 +45,39 @@
         }
         table {
             margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
         }
         th, td {
             text-align: center;
+            padding: 10px;
+            border: 1px solid #dee2e6;
         }
-        .btn-outline-light {
-            color: #fef1f1;
-            background-color: #0a53be;
+        th {
+            background-color: #343a40;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e9ecef;
+        }
+        .table-dark th {
+            background-color: #343a40;
+        }
+        .sales {
+            color: red;
             font-weight: bold;
         }
-        .btn-outline-light:hover {
-            background-color: #2299ff;
-            color: white;
+        @media (max-width: 768px) {
+            .wel_word {
+                font-size: 20px;
+            }
+            th, td {
+                font-size: 14px;
+                padding: 8px;
+            }
         }
     </style>
 </head>
@@ -70,7 +107,7 @@
             <th scope="col">型号</th>
             <th scope="col">价格</th>
             <th scope="col">品牌</th>
-            <th scope="col" style="color: red">销量</th>
+            <th scope="col" class="sales">销量</th>
         </tr>
         </thead>
         <tbody>
@@ -81,7 +118,7 @@
                 <td>${bike.name}</td>
                 <td>${bike.price}</td>
                 <td>${bike.brand}</td>
-                <td style="color: red">${bike.sales}</td>
+                <td class="sales">${bike.sales}</td>
             </tr>
         </c:forEach>
         </tbody>
@@ -90,5 +127,7 @@
 
 <%@include file="/pages/common/footer.jsp"%>
 
+<!-- 引入Font Awesome图标库 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </body>
 </html>

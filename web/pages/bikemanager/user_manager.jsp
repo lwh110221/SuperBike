@@ -43,7 +43,6 @@
             <tr>
                 <th>序号</th>
                 <th>用户名</th>
-                <th>密码</th>
                 <th>电子邮箱</th>
                 <th>收货地址</th>
                 <th>收货人</th>
@@ -57,7 +56,6 @@
                     <tr>
                         <td>${user.id}</td>
                         <td>${user.username}</td>
-                        <td>${user.password}</td>
                         <td>${user.email}</td>
                         <td>${user.address}</td>
                         <td>${user.receiver}</td>
@@ -69,7 +67,7 @@
             </c:forEach>
 
             <tr>
-                <td colspan="8"></td>
+                <td colspan="7"></td>
                 <td><a href="pages/bikemanager/user_edit.jsp?pageNo=${requestScope.page.pageTotal}" class="btn btn-success">添加用户</a></td>
             </tr>
             </tbody>

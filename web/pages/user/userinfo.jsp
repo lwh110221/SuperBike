@@ -13,6 +13,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>我的个人信息</title>
     <%@include file="/pages/common/header.jsp"%>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             padding-top: 20px;
@@ -22,6 +23,7 @@
             background-color: #82cb2d;
             padding: 20px;
             border-radius: 30px;
+            margin-bottom: 20px;
         }
         #logo_img {
             width: 150px;
@@ -34,15 +36,20 @@
             background-color: #ffffff;
             padding: 20px;
             border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 100px; /* Ensure space for footer */
         }
         footer {
             background-color: #343a40;
             color: #ffffff;
             padding: 20px 0;
             text-align: center;
-            position: fixed;
+            position: relative;
             bottom: 0;
             width: 100%;
+        }
+        .form-group {
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -56,37 +63,37 @@
 <div id="main" class="container">
     <form action="userServlet" method="post">
         <input type="hidden" name="action" value="update"/>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>用户名</th>
-                <th>密码</th>
-                <th>电子邮箱</th>
-                <th>收货地址</th>
-                <th>收货人</th>
-                <th>电话</th>
-                <th colspan="2">修改</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td style="display: none;"><input name="id" type="text" value="${sessionScope.user.id}"/></td>
-                <td><input name="username" type="text" value="${sessionScope.user.username}" class="form-control" readonly="readonly"/></td>
-                <td><input name="password" type="text" value="${sessionScope.user.password}" class="form-control"/></td>
-                <td><input name="email" type="text" value="${sessionScope.user.email}" class="form-control"/></td>
-                <td><input name="address" type="text" value="${sessionScope.user.address}" class="form-control"/></td>
-                <td><input name="receiver" type="text" value="${sessionScope.user.receiver}" class="form-control"/></td>
-                <td><input name="phone" type="text" value="${sessionScope.user.phone}" class="form-control"/></td>
-                <td><input type="submit" class="btn btn-primary" value="提交" onclick="onSubmit()"/></td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="form-group">
+            <label for="username">用户名</label>
+            <input id="username" name="username" type="text" value="${sessionScope.user.username}" class="form-control" readonly="readonly"/>
+        </div>
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input id="password" name="password" type="text" value="${sessionScope.user.password}" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="email">电子邮箱</label>
+            <input id="email" name="email" type="text" value="${sessionScope.user.email}" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="address">收货地址</label>
+            <input id="address" name="address" type="text" value="${sessionScope.user.address}" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="receiver">收货人</label>
+            <input id="receiver" name="receiver" type="text" value="${sessionScope.user.receiver}" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="phone">电话</label>
+            <input id="phone" name="phone" type="text" value="${sessionScope.user.phone}" class="form-control"/>
+        </div>
+        <div class="form-group text-center">
+            <input type="submit" class="btn btn-primary" value="提交" onclick="onSubmit()"/>
+        </div>
     </form>
 </div>
 <script>
-    // 当用户点击提交按钮时触发的函数
     function onSubmit() {
-        // 弹出提交成功的提示框
         alert("SuperBikeTips：提交修改成功！");
     }
 </script>
@@ -95,3 +102,4 @@
 </footer>
 </body>
 </html>
+

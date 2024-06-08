@@ -10,30 +10,46 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>总账单</title>
     <%@include file="/pages/common/header.jsp"%>
     <%@include file="/pages/common/managercomon.jsp"%>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+        #main1 {
+            display: flex;
+            justify-content: center;
+            width: 85%;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+        #main {
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 123, 255, 0.05);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
-<style>
-    #main1 {
-        justify-content: center;
-        width: 85%;
-        margin: 0 auto;
-        border-radius: 30px;
-    }
-    #main {
-        text-align: center;
-        background-color: #cbf1ff;
-        border-radius: 30px;
-        padding: 70px;
-    }
-</style>
 <body>
-
 
 <%
     String usernumber=request.getParameter("usernumber");
@@ -41,24 +57,21 @@
     String bikenumbers = request.getParameter("bikenumbers");
     String bigDecimal = request.getParameter("bigDecimal");
 
-
-//转换日期的格式
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月d日 EEEE");
     String currentDate = sdf.format(new Date());
 %>
 
-
 <div id="main1">
-    <div id="main">
-        <table class="table table-striped">
-            <thead>
+    <div id="main" class="container">
+        <table class="table table-striped table-hover">
+            <thead class="table-primary">
             <tr>
                 <th colspan="2"><h1>总账单</h1></th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td colspan="2">截止<%=currentDate%></td>
+                <td colspan="2" class="text-muted">截止<%=currentDate%></td>
             </tr>
             <tr>
                 <td>用户总数:</td>
@@ -73,7 +86,7 @@
                 <td>${bikenumbers}辆</td>
             </tr>
             <tr>
-                <td> 总收入:</td>
+                <td>总收入:</td>
                 <td>${bigDecimal}元</td>
             </tr>
             </tbody>
@@ -82,7 +95,6 @@
 </div>
 
 
-
-
 </body>
 </html>
+

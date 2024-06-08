@@ -15,14 +15,51 @@
     <%@include file="/pages/common/header.jsp"%>
     <%@include file="/pages/common/managercomon.jsp"%>
     <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+        }
         #main1 {
             width: 80%;
             margin: 0 auto;
             height: 100%;
         }
         #main {
-            justify-content: center;
             margin-top: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s;
+        }
+        .form-control:focus {
+            border-color: #82cb2d;
+        }
+        .btn-primary {
+            background-color: #82cb2d;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #6ba22a;
         }
     </style>
 </head>
@@ -35,31 +72,33 @@
         <input type="hidden" name="pageNo" value="${param.pageNo}">
         <input type="hidden" name="action" value="${empty param.id ? "add":"update"}"/>
         <input type="hidden" name="id" value="${requestScope.user.id}"/>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>用户名</th>
-                <th>密码</th>
-                <th>电子邮箱</th>
-                <th>收货地址</th>
-                <th>收货人</th>
-                <th>电话</th>
-                <th colspan="2">操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td style="display: none;"><input name="id" type="text" value="${requestScope.user.id}"/></td>
-                <td><input name="username" type="text" class="form-control" value="${requestScope.user.username}"/></td>
-                <td><input name="password" type="text" class="form-control" value="${requestScope.user.password}"/></td>
-                <td><input name="email" type="text" class="form-control" value="${requestScope.user.email}"/></td>
-                <td><input name="address" type="text" class="form-control" value="${requestScope.user.address}"/></td>
-                <td><input name="receiver" type="text" class="form-control" value="${requestScope.user.receiver}"/></td>
-                <td><input name="phone" type="text" class="form-control" value="${requestScope.user.phone}"/></td>
-                <td><input type="submit" class="btn btn-primary" value="提交"/></td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="form-group">
+            <label for="username">用户名</label>
+            <input name="username" type="text" id="username" class="form-control" value="${requestScope.user.username}"/>
+        </div>
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input name="password" type="password" id="password" class="form-control" value="${requestScope.user.password}"/>
+        </div>
+        <div class="form-group">
+            <label for="email">电子邮箱</label>
+            <input name="email" type="text" id="email" class="form-control" value="${requestScope.user.email}"/>
+        </div>
+        <div class="form-group">
+            <label for="address">收货地址</label>
+            <input name="address" type="text" id="address" class="form-control" value="${requestScope.user.address}"/>
+        </div>
+        <div class="form-group">
+            <label for="receiver">收货人</label>
+            <input name="receiver" type="text" id="receiver" class="form-control" value="${requestScope.user.receiver}"/>
+        </div>
+        <div class="form-group">
+            <label for="phone">电话</label>
+            <input name="phone" type="text" id="phone" class="form-control" value="${requestScope.user.phone}"/>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="提交"/>
+        </div>
     </form>
 </div>
 
