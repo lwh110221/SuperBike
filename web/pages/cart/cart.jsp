@@ -62,14 +62,34 @@
         width: 1.5em;
         height: 1.5em;
     }
+    @media (max-width: 768px) {
+        #header {
+            height: auto;
+            text-align: center;
+        }
+        #header img {
+            margin: 0 auto;
+        }
+        .cart_info {
+            text-align: left;
+        }
+        .cart_info span {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .cart_info .btn {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
 </style>
 <body>
 <div id="header" class="container">
     <div class="row align-items-center">
-        <div class="col-md-3">
-            <img id="logo_img" alt="Logo" src="static/img/logo.jpg" style="width: 150px">
+        <div class="col-md-3 text-center">
+            <img id="logo_img" alt="Logo" src="static/img/logo.jpg" style="width: 150px;">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 text-center">
             <h1 class="text-center">购物车</h1>
         </div>
         <%@include file="/pages/common/login_success_menu.jsp"%>
