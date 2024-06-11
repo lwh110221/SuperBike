@@ -81,7 +81,12 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">选择</th>
+                <th scope="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="selectAll">
+                        <label class="form-check-label" for="selectAll">全选</label>
+                    </div>
+                </th>
                 <th scope="col">商品名称</th>
                 <th scope="col">数量</th>
                 <th scope="col">单价</th>
@@ -144,10 +149,16 @@
             var count = this.value;
             var id = $(this).attr("bikeId");
             if(confirm("你确定要修改这个自行车数量吗？")) {
-                location.href="http://localhost:8080/Bike/cartServlet?action=updateCount&count="+count+"&id="+id;
+                location.href="cartServlet?action=updateCount&count="+count+"&id="+id;
             } else {
                 this.value = this.defaultValue;
             }
+        });
+
+        $("#selectAll").change(function() {
+            var isChecked = $(this).prop("checked");
+            $(".item-checkbox").prop("checked", isChecked);
+            updateSelectedInfo();
         });
 
         $("#cartForm").submit(function() {
